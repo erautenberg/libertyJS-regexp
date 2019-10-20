@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Regular Expressions in Javascript</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-lakeside-light.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+
+  <body>
+    <div>
+      <h1>Regular Expressions in Javascript</h1>
+      <p class="subtitle">Emily Rautenberg - UX Engineer, Comcast NBCUniversal</p>
+      <p class="subtitle">LibertyJS - Friday, October 25, 2019</p>
+      <p class="subtitle"><a href="https://github.com/erautenberg/regexp.git"  target="_blank">https://github.com/erautenberg/regexp.git</a></p>
+
+      <h2>RegEx</h2>
+      <p>A Regular Expression, or regex, is a pattern that can be used to describe a specific subset of text. RegEx use various special character codes to denote sets of characters and shortcuts to generate a searchable pattern. This tutorial will specifically cover how to utilize regular expressions in JavaScript.</p>
+
+      <div class="content">
+          <section>
+              <h2>Helpful Resources</h2>
+              <ul>
+                  <li><a href="https://www.debuggex.com/" target="_blank">https://www.debuggex.com/</a></li>
+                  <li><a href="https://javascript.info/regexp-introduction" target="_blank">https://javascript.info/regexp-introduction</a></li>
+                  <li><a href="https://eloquentjavascript.net/09_regexp.html" target="_blank">https://eloquentjavascript.net/09_regexp.html</a></li>
+              </ul>
+          </section>
+
+          <section>
+              <h2>Creating a Regular Expression</h2>
+              <p>RegEx can be created using the JavaScript object "RegExp"</p>
+              <pre><code class="javascript">  var regLong = new RegExp("pattern", "g");</code></pre>
+
+              <p>RegEx can also be created using '/' to start and end the pattern, similarly to how strings use quotes or backticks</p>
+              <pre><code class="javascript">  var regShort1 = /pattern/;
+  var regShort2 = /pattern/g;</code></pre>
+          </section>
+
+          <section>
+              <h2>Methods of RegEx and Strings</h2>
+
+              <p>There are 6 Javascript methods we will be using throughout this workshop:</p>
+              <pre><code class="javascript">  regex.test(str); // returns true or false if the regular expression finds matches in a string
+
+  str.search(regex); // returns the position of the first match (-1 if no match)
+
+  str.match(regex); // returns array of matches (null if no matches)
+
+  str.split(regex); // separates the string on a given delimiter
+
+  str.replace(regex); // searches a string and replaces all instances of requested string with new string
+
+  regex.exec(str); // returns an array containing the match (element 0) and the groups generated (elements 1-9)</code></pre>
+
+              <p>Let's test them out on the same regular expression and string as before</p>
+              <pre><code class="javascript">  var regex = /pattern/g;
+  var str = "Let's find the pattern 'pattern' in this string.";
+
+  var test = regex.test(str);
+  var position = str.search(regex);
+  var match = str.match(regex);
+  var split = str.split(regex);
+  var replace = str.replace(regex, "PATTERN");
+  var exec = regex.exec(str);</code></pre>
+          </section>
+      </div>
+    </div>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="main.js"></script>
+  </body>
+</html>
