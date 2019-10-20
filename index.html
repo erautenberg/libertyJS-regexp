@@ -66,6 +66,29 @@
   var replace = str.replace(regex, "PATTERN");
   var exec = regex.exec(str);</code></pre>
           </section>
+
+          <section>
+            <h2>Flags</h2>
+            <p>There are 5 JavaScript-specific tags we will be using in this workshop:</p>
+            <pre><code id="flags" class="javascript">  i // case-insensitive (/pattern/ will return results for "pattern" or "PATTERN" or "pATteRn")
+  g // global (search for all matches in a string instead of just one)
+  m // multiline (searches across multiple lines even when the ^ or $, or start and end of text, characters are used)
+  u // unicode support (important for characters encoded with more than 2 bytes--like emojis)
+  y // enables sticky mode (the search returns only a match found at the .lastIndex attribute)</code></pre>
+          <p>Let's take the following regular expressions and strings.</p>
+          <pre><code id="flags" class="javascript">  var regNoCase = /pattern/i; // search for 'pattern' regardless of case
+  var regGlobal = /pattern/g; // search for 'pattern' across entire string
+  var regNoCaseGlobal = /pattern/ig; // search for 'pattern' regardless of case across entire string
+  var regMulti = /pattern$/gm; // search for ending in 'pattern' across all lines regardless of ^ and $ (see Anchors section)
+  var regUnicode = /😄/u; // search for characters with multiple code units
+  var regSticky = /pattern/y; // search for 'pattern' only at the location of .lastIndex
+
+  var str = "Let's search for 'paTtERn' to see how many instances of PATTERN or pattern there are in this string 😄";
+  var strMulti = `pattern
+    pattern`;</code></pre>
+
+
+          </section>
       </div>
     </div>
 

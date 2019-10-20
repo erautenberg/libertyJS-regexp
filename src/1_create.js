@@ -18,7 +18,7 @@ export function createRegExShort() {
 
   // search for 'pattern' with the 'g' flag, or global
   var regShort2 = /pattern/g;
-  console.log(`/pattern/g`, regShort2);
+  console.log(`/pattern/g:`, regShort2);
 }
 
 export function findPosition() {
@@ -28,5 +28,5 @@ export function findPosition() {
 
   // .search returns the position of the match (-1 if no match)
   var position = str.search(regex);
-  console.log(str, position);
+  console.log(`${str}:`, position);
 }

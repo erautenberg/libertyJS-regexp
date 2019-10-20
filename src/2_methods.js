@@ -1,7 +1,7 @@
 /* Methods of RegEx and Strings */
 
 export function methods() {
-  // There are 6 Javascript methods we will be using throughout this tutorial:
+  // There are 6 Javascript methods we will be using throughout this workshop:
   //   regex.test - returns true or false if the regular expression finds matches in a string
   //   str.search - returns the position of the first match (-1 if no match)
   //   str.match - returns array of matches (null if no matches)

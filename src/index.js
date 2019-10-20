@@ -1,5 +1,6 @@
 import * as stepone from './1_create';
 import * as steptwo from './2_methods';
+import * as stepthree from './3_flags';
 
 function main() {
 
@@ -9,10 +10,13 @@ function main() {
   stepone.createRegExShort();
   stepone.findPosition();
 
-  // Step Two:
+  // Step Two: Methods of RegEx and Strings
   console.log('\nMETHODS OF REGEX AND STRINGS');
   steptwo.methods();
 
+  // Step Three: Flags
+  console.log('\nFLAGS');
+  stepthree.flags();
 }
 
 main();
