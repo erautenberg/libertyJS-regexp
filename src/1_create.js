@@ -1,6 +1,12 @@
 /* Creating a new RegEx */
 
-export function createRegExLong() {
+export function createRegEx() {
+  createRegExLong();
+  createRegExShort();
+  findPosition();
+}
+
+function createRegExLong() {
   // RegEx can be created using the JavaScript object "RegExp"
 
   // search for 'pattern' with the 'g' flag, or global
@@ -8,7 +14,7 @@ export function createRegExLong() {
   console.log(`new RegExp("pattern", "g"):`, regLong);
 }
 
-export function createRegExShort() {
+function createRegExShort() {
   // RegEx can also be created using '/' to start and end the pattern,
   // similarly to how strings use quotes or backticks
 
@@ -21,7 +27,7 @@ export function createRegExShort() {
   console.log(`/pattern/g:`, regShort2);
 }
 
-export function findPosition() {
+function findPosition() {
   // Find the pattern in the following string
   var str = "Let's find the word 'pattern' in this string.";
   var regex = /pattern/g;

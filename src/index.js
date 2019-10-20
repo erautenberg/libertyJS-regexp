@@ -1,22 +1,35 @@
-import * as stepone from './1_create';
-import * as steptwo from './2_methods';
+import * as stepone   from './1_create';
+import * as steptwo   from './2_methods';
 import * as stepthree from './3_flags';
+import * as stepfour  from './4_anchors';
 
-function main() {
+function showStep(step) {
+  switch (step) {
+    case 1:
+    default:
+      // Step One: Creating a new RegEx
+      console.log('\nCREATING A NEW REGEX');
+      stepone.createRegEx();
+      break;
 
-  // Step One: Creating a new RegEx
-  console.log('\nCREATING A NEW REGEX');
-  stepone.createRegExLong();
-  stepone.createRegExShort();
-  stepone.findPosition();
+    case 2:
+      // Step Two: Methods of RegEx and Strings
+      console.log('\nMETHODS OF REGEX AND STRINGS');
+      steptwo.methods();
+      break;
 
-  // Step Two: Methods of RegEx and Strings
-  console.log('\nMETHODS OF REGEX AND STRINGS');
-  steptwo.methods();
+    case 3:
+      // Step Three: Flags
+      console.log('\nFLAGS');
+      stepthree.flags();
+      break;
 
-  // Step Three: Flags
-  console.log('\nFLAGS');
-  stepthree.flags();
+    case 4:
+      // Step Four: Flags
+      console.log('\nANCHORS');
+      stepfour.anchors();
+      break;
+  }
 }
 
-main();
+showStep(4);

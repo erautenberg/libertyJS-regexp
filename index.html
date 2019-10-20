@@ -33,10 +33,10 @@
               <h2>Creating a Regular Expression</h2>
               <p>RegEx can be created using the JavaScript object "RegExp"</p>
               <pre><code class="javascript">  var regLong = new RegExp("pattern", "g");</code></pre>
-
               <p>RegEx can also be created using '/' to start and end the pattern, similarly to how strings use quotes or backticks</p>
               <pre><code class="javascript">  var regShort1 = /pattern/;
   var regShort2 = /pattern/g;</code></pre>
+              <p>Let's check out what this looks like on <a href="https://www.debuggex.com/r/WX61ZDcEIakJo2vE" target="_blank">Debuggex</a></p>
           </section>
 
           <section>
@@ -55,7 +55,7 @@
 
   regex.exec(str); // returns an array containing the match (element 0) and the groups generated (elements 1-9)</code></pre>
 
-              <p>Let's test them out on the same regular expression and string as before</p>
+              <p>Let's test them out on the same regular expression and string as before.</p>
               <pre><code class="javascript">  var regex = /pattern/g;
   var str = "Let's find the pattern 'pattern' in this string.";
 
@@ -82,12 +82,84 @@
   var regMulti = /pattern$/gm; // search for ending in 'pattern' across all lines regardless of ^ and $ (see Anchors section)
   var regUnicode = /😄/u; // search for characters with multiple code units
   var regSticky = /pattern/y; // search for 'pattern' only at the location of .lastIndex
+  regSticky.lastIndex = 67;
 
   var str = "Let's search for 'paTtERn' to see how many instances of PATTERN or pattern there are in this string 😄";
   var strMulti = `pattern
     pattern`;</code></pre>
+          </section>
 
+          <section>
+              <h2>Anchors</h2>
+              <p>The special characters ^ and $ are called anchors, and match at the beginning and end of text, respectively</p>
+              <pre><code class="javascript">  var str1 = "First Second Third Fourth Fourth";
+  var str2 = "Fourth Fourth Third Second First";
+  var start = /^First/g; // check if "First" is at the beginning of the string
+  var end = /Fourth$/g; // check if "Fourth" is at the end of the string</code></pre>
+              <p></p>
+          </section>
 
+          <section>
+              <h2>Sets and Ranges</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Character Groups</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Escaping Special Characters</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Lengths</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Quantifiers</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Greedy</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Groups</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Or (|)</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
+          </section>
+
+          <section>
+              <h2>Exercise Questions</h2>
+              <p></p>
+              <pre><code class="javascript"></code></pre>
+              <p></p>
           </section>
       </div>
     </div>
