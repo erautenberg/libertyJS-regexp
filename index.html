@@ -43,17 +43,17 @@
               <h2>Methods of RegEx and Strings</h2>
 
               <p>There are 6 Javascript methods we will be using throughout this workshop:</p>
-              <pre><code class="javascript">  regex.test(str); // returns true or false if the regular expression finds matches in a string
+              <pre><code class="javascript">  regex.test(str);    // returns true or false if the regular expression finds matches in a string
 
-  str.search(regex); // returns the position of the first match (-1 if no match)
+  str.search(regex);  // returns the position of the first match (-1 if no match)
 
-  str.match(regex); // returns array of matches (null if no matches)
+  str.match(regex);   // returns array of matches (null if no matches)
 
-  str.split(regex); // separates the string on a given delimiter
+  str.split(regex);   // separates the string on a given delimiter
 
   str.replace(regex); // searches a string and replaces all instances of requested string with new string
 
-  regex.exec(str); // returns an array containing the match (element 0) and the groups generated (elements 1-9)</code></pre>
+  regex.exec(str);    // returns an array containing the match (element 0) and the groups generated (elements 1-9)</code></pre>
 
               <p>Let's test them out on the same regular expression and string as before.</p>
               <pre><code class="javascript">  var regex = /pattern/g;
@@ -76,12 +76,12 @@
   u // unicode support (important for characters encoded with more than 2 bytes--like emojis)
   y // enables sticky mode (the search returns only a match found at the .lastIndex attribute)</code></pre>
           <p>Let's take the following regular expressions and strings.</p>
-          <pre><code id="flags" class="javascript">  var regNoCase = /pattern/i; // search for 'pattern' regardless of case
-  var regGlobal = /pattern/g; // search for 'pattern' across entire string
+          <pre><code id="flags" class="javascript">  var regNoCase = /pattern/i;        // search for 'pattern' regardless of case
+  var regGlobal = /pattern/g;        // search for 'pattern' across entire string
   var regNoCaseGlobal = /pattern/ig; // search for 'pattern' regardless of case across entire string
-  var regMulti = /pattern$/gm; // search for ending in 'pattern' across all lines regardless of ^ and $ (see Anchors section)
-  var regUnicode = /😄/u; // search for characters with multiple code units
-  var regSticky = /pattern/y; // search for 'pattern' only at the location of .lastIndex
+  var regMulti = /pattern$/gm;       // search for ending in 'pattern' across all lines regardless of ^ and $ (see Anchors section)
+  var regUnicode = /😄/u;            // search for characters with multiple code units
+  var regSticky = /pattern/y;        // search for 'pattern' only at the location of .lastIndex
   regSticky.lastIndex = 67;
 
   var str = "Let's search for 'paTtERn' to see how many instances of PATTERN or pattern there are in this string 😄";
@@ -110,10 +110,30 @@
           </section>
 
           <section>
-              <h2>Character Groups</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <h2>Character Sets</h2>
+              <p>There are many different character codes that can be used as shorthands for groupings of characters</p>
+              <pre><code class="javascript">  \d // any digit character (0-9)
+  \w // any alphanumeric character (a-z, A-Z, 0-9, and some symbols)
+  \s // any whitespace character (space, tab, etc.)
+  \D // any NON-digit character
+  \W // any NON-alphanumeric character
+  \S // any NON-whitespace character
+  .  // any character that isn't a newline (\n)</code></pre>
+              <p>Let's take the following regular expressions and strings.</p>
+              <pre><code class="javascript">  var str = "This contains all 6 types of characters.";
+
+  var nums = /\d/g;     // search for any digits
+  var words = /\w/g;    // search for any word characters
+  var space = /\s/g;    // search for whitespaces
+  var nonNums = /\D/g;  // search for non digits
+  var nonWords = /\W/g; // search for non word characters
+  var nonSpace = /\S/g; // search for non white spaces
+  var all = /./g;       // search for any non newline character</code></pre>
+            <p>There is a "cheatsheet" of all these character classes on <a href="https://www.debuggex.com/#cheatsheet" target="_blank">Debuggex</a> as well.</p>
+            <p>There is one more character class called a "word boundary," which also comes with a reverse.</p>
+            <pre><code class="javascript">  var boundary = /\bJava\b/g;
+  var nonBoundary = /Java\B/g;
+            </code></pre>
           </section>
 
           <section>
