@@ -130,16 +130,17 @@
   var nonSpace = /\S/g; // search for non white spaces
   var all = /./g;       // search for any non newline character</code></pre>
             <p>There is a "cheatsheet" of all these character classes on <a href="https://www.debuggex.com/#cheatsheet" target="_blank">Debuggex</a> as well.</p>
-            <p>There is one more character class called a "word boundary," which also comes with a reverse.</p>
-            <pre><code class="javascript">  var boundary = /\bJava\b/g;
-  var nonBoundary = /Java\B/g;
-            </code></pre>
+            <p>There is one more character class called a "word boundary," which also comes with a reverse. This is used to specify there should be a separation between your match and  the rest of the string.</p>
+            <pre><code class="javascript">  var boundaryStr = "Java has a boundary, but JavaScript does not";
+
+  var boundary = /\bJava\b/g;
+  var nonBoundary = /Java\B/g;</code></pre>
           </section>
 
           <section>
               <h2>Escaping Special Characters</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
+              <p>As you probably noticed by now, RegEx uses special characters to declare specific behavior. If the pattern you are looking for actually contains a special character, similarly to HTML, Javascript, etc., you will have to escape it using the backslash, '\'.</p>
+              <pre><code class="javascript">  var reg = /[\.\?\!\(\)]/g;</code></pre>
               <p></p>
           </section>
 
