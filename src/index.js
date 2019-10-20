@@ -5,6 +5,7 @@ import * as step4 from './4_anchors';
 import * as step5 from './5_setsranges';
 import * as step6 from './6_characters';
 import * as step7 from './7_escaping';
+import * as step8 from './8_lengths';
 
 function showStep(step) {
   switch (step) {
@@ -49,7 +50,12 @@ function showStep(step) {
       console.log('\nESCAPING SPECIAL CHARACTERS\n\n');
       step7.special();
 
+    case 8:
+        // Step Eight: Lengths
+        console.log('\nLENGTHS\n\n');
+        step8.lengths();
+
   }
 }
 
-showStep(7);
+showStep(8);

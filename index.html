@@ -106,7 +106,7 @@
               <pre><code class="javascript">  var abc = /[abc]/g; // essentially a or b or c</code></pre>
               <p>You can also create custom ranges</p>
               <pre><code class="javascript">  var def = /[d-f]/g; // d or e or f</code></pre>
-              <p>Let's look at what sets and ranges look like on <a href="https://www.debuggex.com/r/vP_gD0e1rHzNsyDF" target="_blank">Debuggex</a>.</p>
+              <p><a href="https://www.debuggex.com/r/vP_gD0e1rHzNsyDF" target="_blank">Debuggex</a> also diagrams these sets for you.</p>
           </section>
 
           <section>
@@ -141,14 +141,15 @@
               <h2>Escaping Special Characters</h2>
               <p>As you probably noticed by now, RegEx uses special characters to declare specific behavior. If the pattern you are looking for actually contains a special character, similarly to HTML, Javascript, etc., you will have to escape it using the backslash, '\'.</p>
               <pre><code class="javascript">  var reg = /[\.\?\!\(\)]/g;</code></pre>
-              <p></p>
+              <p>It might be difficult to see, but the way <a href="https://www.debuggex.com/r/SWFr20JUWzdZiaFq" target="_blank">Debuggex</a> differentiates between the RegEx special characters and the actual character is with blue versus black text.</p>
           </section>
 
           <section>
               <h2>Lengths</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <p>It's also possible to set how many of a certain character code are expected.</p>
+              <pre><code class="javascript">  // a digit of length 1-2, a digit of length 1-2, and a digit of length 4
+  var reg = /\d{1,2}-\d{1,2}-\d{4}/g</code></pre>
+              <p><a href="https://www.debuggex.com/r/ni-meD3Oxj6pfujj" target="_blank">Debuggex</a> adds some nice loops to its flow chart when you add lengths.</p>
           </section>
 
           <section>
