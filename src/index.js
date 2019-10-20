@@ -2,6 +2,7 @@ import * as stepone   from './1_create';
 import * as steptwo   from './2_methods';
 import * as stepthree from './3_flags';
 import * as stepfour  from './4_anchors';
+import * as stepfive  from './5_setsranges';
 
 function showStep(step) {
   switch (step) {
@@ -29,7 +30,13 @@ function showStep(step) {
       console.log('\nANCHORS');
       stepfour.anchors();
       break;
+
+    case 5:
+      // Step Five: Sets and Ranges
+      console.log('\nSETS AND RANGES\n\n');
+      stepfive.setsranges();
+      break;
   }
 }
 
-showStep(4);
+showStep(5);

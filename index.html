@@ -96,14 +96,17 @@
   var str2 = "Fourth Fourth Third Second First";
   var start = /^First/g; // check if "First" is at the beginning of the string
   var end = /Fourth$/g; // check if "Fourth" is at the end of the string</code></pre>
-              <p></p>
+              <p>We can see which instance of "Fourth" is selected using <a href="https://www.debuggex.com/r/ydLadC5rdlaKuVxL
+                " target="_blank">Debuggex</a>.</p>
           </section>
 
           <section>
               <h2>Sets and Ranges</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <p>It's also possible to query from a set of characters</p>
+              <pre><code class="javascript">  var abc = /[abc]/g; // essentially a or b or c</code></pre>
+              <p>You can also create custom ranges</p>
+              <pre><code class="javascript">  var def = /[d-f]/g; // d or e or f</code></pre>
+              <p>Let's look at what sets and ranges look like on <a href="https://www.debuggex.com/r/vP_gD0e1rHzNsyDF" target="_blank">Debuggex</a>.</p>
           </section>
 
           <section>
