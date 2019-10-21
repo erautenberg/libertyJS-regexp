@@ -6,6 +6,7 @@ import * as step5 from './5_setsranges';
 import * as step6 from './6_characters';
 import * as step7 from './7_escaping';
 import * as step9 from './9_quantifiers';
+import * as step10 from './10_greedy';
 
 function showStep(step) {
   switch (step) {
@@ -63,7 +64,13 @@ function showStep(step) {
       console.log('\nQUANTIFIERS\n\n');
       step9.quantifiers();
       break;
+
+    case 10:
+      // Step Nine: Quantifiers
+      console.log('\nGREEDY QUANTIFIERS\n\n');
+      step10.greedylazy();
+      break;
   }
 }
 
-showStep(9);
+showStep(10);

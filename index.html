@@ -169,10 +169,17 @@
           </section>
 
           <section>
-              <h2>Greedy</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <h2>Greedy vs. Lazy Quantifiers</h2>
+              <p>As you may have noticed in the previous example, the regular expression found matches for each quanitfier. The results, however, were different for each quanitifier. This is because quantifiers are "greedy." Greedy quantifiers try to match at a given position and go as far forward as they can before the match fails. When it fails, it backtracks one position at a time.</p>
+              <p>Consider this "greedy" regular expression against this string.</p>
+              <pre><code class="javascript">  // try to search for all "..." in order to replace with '...' the greedy way
+  var regGreedy = /".+"/g;
+  var str = 'This demo is about "Regular Expressions" in "JavaScript"';</code></pre>
+              <p>In order to avoid this behavior, you can make the quantifier "lazy," or tell the expression to repeat the minimal number of times. This means they will try to match only the next position first, and after failing, will backtrack once and then trying matching again</p>
+              <pre><code class="javascript">  // try to search for all "..." the lazy way
+  var regLazy = /".+?"/g;
+  var str = 'This demo is about "Regular Expressions" in "JavaScript"';</code></pre>
+              <p>Note: There are also "positive lookaheads" and "negative lookaheads" that can be considered, but are outside of the scope of this tutorial. <a href="https://www.regular-expressions.info/lookaround.html" target="_blank">https://www.regular-expressions.info/lookaround.html</a></p>
           </section>
 
           <section>
