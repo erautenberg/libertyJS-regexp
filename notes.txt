@@ -96,7 +96,7 @@ Let’s say we want to find the word “First” in a string, but only if it act
 
 First, let’s take a look at Debbugex. Notice how the caret and dollar signs are slightly bolded in the diagram. This is how you know it is a special character and not just looking for the literal symbol “^”.
 
-Now, if we jump back and run our code, you’ll see that a search on the expression looking for “First” at the beginning yielded position 0 for the first string, and -1, a failure, for the second. The same goes for Fourth. The first string found position 26 as a match, and the second as a failure. Remember how we added the word Fourth twice? If we actually count out our 26 characters in this first string, our match starts at the second instance of Fourth, which is exactly where we want it. If we didn’t have this $ anchor, then the first instance of fourth, here, would have succeeded as a match.
+Now, if we jump back and run our code, you’ll see that a search on the expression looking for “First” at the beginning yielded position 0 for the first string, and -1, a failure, for the second. The same goes for Fourth. The first string found position 26 as a match, and the second as a failure. Remember how we added the word Fourth twice? If we actually count out our 26 characters in this first string, our match starts at the second instance of Fourth, which is exactly where we want it. If we didn’t have this $ anchor, then the first instance of Fourth, here, would have succeeded as a match.
 
 
 SETS AND RANGES
@@ -104,7 +104,7 @@ So far we have only been dealing with exact strings that we are looking for. It 
 
 If we have [abc] in brackets, we are basically saying I need a character that is any one of these things, an a, or a b, or a c. Let’s take a look at Debuggex real quick. You’ll notice it now says “one of” above the abc. If I add extra text outside the brackets, you’ll see the “one of” title does not apply.
 
-Going back, if I make a string filled with these three characters and run match on it, I will get every instance of a, b, and, c in the string. For anyone who has not seen a loop before, no worries, all I’m doing here is getting an exact count on the number of a’s, b’s, and c’s there are in the match array.
+Going back, if I make a string filled with these three characters and run match on it, I will get every instance of a, b, and, c in the string. All I’m doing in this function here is getting an exact count on the number of a’s, b’s, and c’s there are in the match array.
 
 Additionally, you can supply ranges of characters to the bracket notation. Instead of writing “def,” I can write “d-f” with the hyphen. I then have a similar loop, so if we run these match functions, I get the following counts. You are welcome to sit there are count the exact number of a’s, b’s, c’s, d’s, e’s, and f’s, by hand, but I think the computer’s got it covered.
 
@@ -117,19 +117,14 @@ CHARACTER GROUPS
 So character ranges are super helpful, but you don’t want to have to sit there and list out every possible character all the time, which is why we have short hands!
 
 Our first short hand is \d, which means any digit character.
-Slash W is any alphanumeric character, which includes digits, letters, and some symbols.
+Slash w is any alphanumeric character, which includes digits, letters, and some symbols.
 Slash s is any whitespace character, like spaces, tabs, or newlines.
 
 Our next three shorthand are essentially the inverse of the first three. Basically, a lowercase letter shorthand means look for this thing, and an uppercase letter shorthand means look for NOT this thing. So capital slash D is any non-digit character, capital W is not an alphanumeric character, and capital S is not a whitespace character.
 
-Lastly is the period, which is one of the most powerful symbols. It will look for any character that isn’t a newline. For anyone not familiar, the encoding for a newline the backslash n.
+Lastly is the period, which is one of the most powerful symbols. It will look for any character that isn’t a newline (as in backslash n).
 
 If we hop over to Debuggex, you can see that again the little flowchart symbol is sort of bolded. If I type some random garbage into the test block, you can see the different character groups in action.
-
-There is one more character group I want to show you before we move on, which is called a “word boundary.” Word boundaries are used to specify that there should be separation before the match you are looking for, and the rest of the string.
-
-For example, if we take a sentence that contains both the words “Java” and “JavaScript,” trying to match for just the word “Java” would returned two results. By using word boundaries, however, we can match just the first instance.
- Similarly to \d, \w, and \s, \b has an inverse as well. Capital slash B means no word boundary is present, which is a way to grab the second instance of Java, in the word “JavaScript” if we wanted to.
 
 Let’s run all this and see what we get.
 In the first string, we get a match for a digit.
@@ -139,6 +134,12 @@ Then we have everything that’s not a digit—so that entire sentence minus the
 Next is not an alphanumeric character, so it’s the spaces and the period.
 Now we have no spaces, so it’s basically the same as the \w except this includes the period at the end.
 And lastly, we have the period, so it’s literally the entire sentence.
+
+There is one more character group I want to show you before we move on, which is called a “word boundary.” Word boundaries are used to specify that there should be separation before the match you are looking for, and the rest of the string.
+
+For example, if we take a sentence that contains both the words “Java” and “JavaScript,” trying to match for just the word “Java” would returned two results. By using word boundaries, however, we can match just the first instance.
+
+Similarly to \d, \w, and \s, \b has an inverse as well. Capital slash B means no word boundary is present, which is a way to grab the second instance of Java, in the word “JavaScript” if we wanted to.
 
 
 ESCAPING SPECIAL CHARACTERS
@@ -159,7 +160,10 @@ Let’s pop this into Debuggex to see the new flow chart. No we have loops aroun
 QUANTIFIERS
 In addition to specifying exact occurrences of a pattern using the curly braces, you can also specify some less strict quantities.
 
-There are three special characters that can be used to quantify occurrences: the plus sign, the question mark, and the asterisk. The plus sign means a pattern can occur one or more times, so at least once, the question mark means it can happen zero or once, so either not at all, or only one time, and the asterisk means zero or more, so not at all, or infinitely many times, we don’t care.
+There are three special characters that can be used to quantify occurrences: the plus sign, the question mark, and the asterisk.
+The plus sign means a pattern can occur one or more times, so at least once.
+The question mark means it can happen zero or once, so either not at all, or only one time.
+And the asterisk means zero or more, so not at all, or infinitely many times, we don’t care.
 
 Let’s hop over to Debuggex to see how the flow changes. We’ll steal our digit example and use the string 12345. The plus sign works on the entire string, whereas the question mark actually only works on the individual numbers. Then again, if I use the asterisk, the entire string is a match.
 
@@ -177,16 +181,17 @@ Look at the string “’This demo is about "Regular Expressions" in "JavaScript
 
 Let’s look at the diagram real quick. If we add our string into the test field, you’ll notice that this entire section gets highlighted as a match. That’s because the plus sign is greedy. We find this first double quote, then just look for any character until that fails, which in this case will be when it reaches the end of the string. Then it’ll start trying to find the next set of double quotes, and because it’s reached the end of the string, it will have to back track a character. Once it does that, it will find the quotes here after JavaScript, and bam, it’s found a match.
 
-Technically, it did exactly what we asked, but not necessarily what we wanted. In order to make the expression repeat as few times as possible, we need to make the quantifier lazy, which basically is a signal for it to search for those double quotes as soon as possible instead of waiting until the end.
+Technically, it did exactly what we asked, but not necessarily what we wanted. But that's the story of programming, right? So, in order to make the expression repeat as few times as possible, we need to make the quantifier lazy, which basically is a signal for it to search for those double quotes as soon as possible instead of waiting until the end.
 
 To do that, we add the question mark after the plus sign. Unfortunately, you can’t see much of a change in the diagram, however, you’ll notice that the expression now generates two separate matches. This is all also true of the asterisk quantifier. If I switch out the plus sign real quick, you’ll see it functions the same way (but obviously this way, we no longer care if there is content in between the quotes, whereas the plus sign was looking for at least one character).
- If I run our code, you’ll see in the greedy way, there is one match, and in the lazy way, there are two matches.
+
+If I run our code, you’ll see in the greedy way, there is one match, and in the lazy way, there are two matches.
 
 
 GROUPS
 At this point, you have all of the basic tools you need to build some simple, but still very powerful regular expressions. However, I have two more topics I’d like to introduce you to before we go through some exercises together.
 
-The first is my absolute favorite thing about Regular Expressions and what I think makes them truly amazing. Regular Expressions actually have to ability store, then manipulate individual matches using something called a group.
+The first is my absolute favorite thing about Regular Expressions and what I think makes them truly amazing. Regular Expressions actually have the ability to store, then manipulate, individual matches using something called a group.
 
 In order to create a group, all you have to do is wrap your expression in parenthesis. Let’s go to Debuggex to work through an example.
 
@@ -194,15 +199,17 @@ Let’s say we have the string “LastName, FirstName” and we want change this
 
 So we can use the \w character code to grab alphanumeric characters, and say that they need to occur at least once by adding a plus sign. We can also add a comma and space to separate them. Does this make sense so far?
 
-So now, if we add the parenthesis to these two section, look what happens to the diagram. You actually get labels for different groups, as well as a number assigned to each group. Great! So now that we have these groups…what do we do with them?  I mentioned that in JavaScript, we have an execute method. If we use this execute method on the expression, we get an array with all of the groups. If I run this, we can print out the array. The first element is the complete match, and the next elements are the groups. So LastName, FirstName is our match, then we have LastName, which is group 1, or group[1], and FirstName, which is group2, or group[2].
+So now, if we add the parenthesis to these two sections, look what happens to the diagram. You actually get labels for different groups, as well as a number assigned to each group. Great! So now that we have these groups…what do we do with them?
 
-We also have access to the string’s replace method in JavaScript. We can actually create a string to replace the old one with, that uses these groupings, simply by using a dollar sign. If we write $1, that signals to javascript that you want to access whatever is in the first position of expression’s matches. If you use $2, then you want the second. So, we can replace LastName comma space FirstName with FirstName space LastName, simply by writing dollar sign two space dollar sign one, and pass it into the string replace function.
+I mentioned that in JavaScript, we have an execute method. If we use this execute method on the expression, we get an array with all of the groups. If I run this, we can print out the array. The first element is the complete match, and the next elements are the groups. So LastName, FirstName is our match, then we have LastName, which is group 1, or group[1], and FirstName, which is group2, or group[2].
+
+We also have access to the string’s replace method in JavaScript. We can actually create a string to replace the old one with, that uses these groupings, simply by using a dollar sign. If we write $1, that signals to JavaScript that you want to access whatever is in the first position of expression’s matches. If you use $2, then you want the second. So, we can replace LastName comma space FirstName with FirstName space LastName, simply by writing dollar sign two space dollar sign one, and pass it into the string replace function. By the way, this also works in your text editor's find and replace.
 
 When we run it, we actually get the new format we wanted!
 
 In addition to creating “capturing” groups like we just did, you can also create “non-capturing” groups. For example, let’s say you want to add a range to a set pattern.
 
-If we go to Debuggex and try to find the word pattern only once or twice in a string without making it a group, then you end up repeating only the n, which is not what we wanted. If we wrap the entire word “pattern” in parenthesis, however, it becomes a group and the {1,2} range gets applied to the entire group. Great! But, what if we don’t actually care about this group later on? What if we end up with a huge expression at some point with multiple groups and we don’t have to sort through which groups are important and which aren’t?
+If we go to Debuggex and try to find the word pattern only once or twice in a string without making it a group, then you end up repeating only the n, which is not what we wanted. If we wrap the entire word “pattern” in parenthesis, however, it becomes a group and the {1,2} range gets applied to the entire group. Great! But, what if we don’t actually care about this group later on? What if we end up with a huge expression at some point with multiple groups and we don’t want to have to sort through which groups are important and which aren’t?
 
 Well, we can make this group non-capturing by adding “question mark colon” in front, like this. Now, if we run our code, you’ll notice that the exec function only prints out the first match. It doesn’t print out our groups with it because there are no saved groups!
 
@@ -222,7 +229,7 @@ Well, that’s not what we want, so how do you think we could solve this while s
 
 We could just type gray and grey with a pipe in the middle, sure! But that leads to some repetitiveness, right?
 
-The problem we’re having right now, is asking the same problem we were having in our last section where we tried to add the range to the word pattern. How did we solve that? We wrapped pattern in a group. So what if we wrap a and e in a group?
+The problem we’re having right now, is actually the same problem we were having in our last section where we tried to add the range to the word pattern. How did we solve that? We wrapped pattern in a group. So what if we wrap a and e in a group?
 
 Well, that chart makes a lot more sense right?  And, it’s virtually the same as the bracket notation. However, when your expressions get much long, this is probably going to be much easier to use.
 

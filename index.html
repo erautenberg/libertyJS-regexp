@@ -130,7 +130,9 @@
   var nonSpace = /\S/g; // search for non white spaces
   var all = /./g;       // search for any non newline character</code></pre>
             <p>There is a "cheatsheet" of all these character classes on <a href="https://www.debuggex.com/#cheatsheet" target="_blank">Debuggex</a> as well.</p>
-            <p>There is one more character class called a "word boundary," which also comes with a reverse. This is used to specify there should be a separation between your match and  the rest of the string.</p>
+            <p>There is one more character class called a "word boundary," which also comes with an inverse. This is used to specify there should be a separation between your match and  the rest of the string.</p>
+            <pre><code class="javascript">  \b // any word boundary
+  \B // any NON-word boundary</code></pre>
             <pre><code class="javascript">  var boundaryStr = "Java has a boundary, but JavaScript does not";
 
   var boundary = /\bJava\b/g;
@@ -188,6 +190,7 @@
               <p>This is my <b>favorite</b> part of RegEx!</p>
               <pre><code class="javascript">  var reg = /(\w+), (\w+)/g; // this will look for a string that follows the "word, word" format
   var str = "LastName, FirstName"; // let's make this FirstName LastName</code></pre>
+  <p>Of course, <a href=" https://www.debuggex.com/r/ABnOtr-vYcfptlkW" target="_blank">Debuggex</a> gives you information about these groups.</p>
               <p>If you use the <b>exec</b> function, you can view all of the matching groups where 0 is the entire string, and 1-N are the matching groups.</p>
               <p>The matches can be referred to as $1, $2, etc. where the number corresponds to the order in which the group matches were found. The entire match can be referenced with <b>$&</b>.</p>
               <pre><code class="javascript">  var repl = "$2 $1";
