@@ -154,9 +154,18 @@
 
           <section>
               <h2>Quantifiers</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <p>There are also other special characters used to quantify occurances other than a specified range.</p>
+              <pre><code class="javascript">  + // one or more
+  ? // zero or one
+  * // zero or more</code></pre>
+              <p>Consider the following strings and regular expressions.</p>
+              <pre><code class="javascript">  var str1 = "no nums";
+  var str2 = "12345";
+
+  var plus = /\d+/g;     // digit occurs at least once
+  var question = /\d?/g; // digit occurs no more than once
+  var star = /\d*/g;     // digit does not occur or occurs infinitely many times</code></pre>
+            <p>Again, <a href="https://www.debuggex.com/r/uAYBBqscc7ei1-xe" target="_blank">Debuggex</a> provides some helpful loops to its diagram when you use these quantifiers.</p>
           </section>
 
           <section>

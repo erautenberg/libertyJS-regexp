@@ -6,7 +6,7 @@
 * Flags
 * Anchors
 * Sets and Ranges
-* Character Groups
+* Character Sets
 * Escaping Special Characters
 * Lengths
 * Quantifiers
