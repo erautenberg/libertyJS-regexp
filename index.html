@@ -184,9 +184,19 @@
 
           <section>
               <h2>Groups</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <p>When trying to replace data using RegEx, it is possible to store the matched data in order to use it either later in the expression, or later in a string replace method, by using capturing groups.</p>
+              <p>This is my <b>favorite</b> part of RegEx!</p>
+              <pre><code class="javascript">  var reg = /(\w+), (\w+)/g; // this will look for a string that follows the "word, word" format
+  var str = "LastName, FirstName"; // let's make this FirstName LastName</code></pre>
+              <p>If you use the <b>exec</b> function, you can view all of the matching groups where 0 is the entire string, and 1-N are the matching groups.</p>
+              <p>The matches can be referred to as $1, $2, etc. where the number corresponds to the order in which the group matches were found. The entire match can be referenced with <b>$&</b>.</p>
+              <pre><code class="javascript">  var repl = "$2 $1";
+  var str2 = str.replace(reg, repl);</code></pre>
+              <p>Alternatively, you can also create "non-capturing" groups.</p>
+              <pre><code class="javascript">  // this will allow you to apply ranges and quanitfiers to a group without actually saving it
+  var regex = /(?:pattern){1,2}!/g;
+  var str3 = "pattern! patternpattern! patternpatternpattern!"</code></pre>
+
           </section>
 
           <section>
