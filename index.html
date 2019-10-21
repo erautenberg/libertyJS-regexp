@@ -196,21 +196,61 @@
               <pre><code class="javascript">  // this will allow you to apply ranges and quanitfiers to a group without actually saving it
   var regex = /(?:pattern){1,2}!/g;
   var str3 = "pattern! patternpattern! patternpatternpattern!"</code></pre>
-
           </section>
 
           <section>
               <h2>Or (|)</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+              <p>Groups can also contains logical OR's (|)</p>
+              <pre><code class="javascript">  (a|b) is essentially the same as [ab], but allows you access to the group
+  a|b also means a or b, but does not allow you access to the group</code></pre>
+              <p>When used outside of a group, keep in mind the | will compare everything before it and everything after.</p>
+              <pre><code class="javascript">  var reg1 = /gr(a|e)y/g; // gray or grey (and the same as /gr[ae]y/g)
+  var reg2 = /gra|ey/g; // gra or ey
+  var str = "Do you prefer gray or grey?";</code></pre>
           </section>
 
           <section>
               <h2>Exercise Questions</h2>
-              <p></p>
-              <pre><code class="javascript"></code></pre>
-              <p></p>
+
+              <h3>Prompt 1</h3>
+              <p>Write a regular expression to confirm a user has entered a valid username, given the following requirements:
+                <ul>
+                  <li>3-16 characters in length</li>
+                  <li>case does not matter</li>
+                  <li>contains no special characters other than _</li>
+                </ul>
+              </p>
+              <pre><code class="javascript">  var valid = "th1s_1s_my_name";
+  var invalid = "0this-i$nt";</code></pre>
+
+              <h3>Prompt 2</h3>
+              <p>Extract only the full names from a string which have titles.
+                <ul>
+                  <li>Mr.</li>
+                  <li>Mrs.</li>
+                  <li>Ms.</li>
+                  <li>Dr.</li>
+                </ul>
+              </p>
+              <pre><code class="javascript">  var str = "Mr. Harry Potter, Ms. Hermione Granger, Mr. Ronald Weasley, Lord Voldemort, Mrs. Molly Weasley";</code></pre>
+
+              <h3>Prompt 3</h3>
+              <p>Now, using the answer from Prompt 2, let's rearrange these names to be Last, First Title</p>
+              <pre><code class="javascript">  var str = "Mr. Harry Potter, Ms. Hermione Granger, Mr. Ronald Weasley, Lord Voldemort, Mrs. Molly Weasley";</code></pre>
+
+              <h3>Prompt 4</h3>
+              <p>Think of a voice assistant which is able to interpret various utterances all leading to the same result. How could you account for someone asking Alexa or Google to search for something on YouTube?</p>
+              <p>Chain together three different regular expressions to account for the following utterances:
+                <ul>
+                  <li>YouTube [QUERY]</li>
+                  <li>Search YouTube for [QUERY]</li>
+                  <li>Search/Find (for) [QUERY] on YouTube</li>
+                </ul>
+              </p>
+              <pre><code class="javascript">  var test1 = "YouTube Beyonce";
+  var test2 = "Search YouTube for Beyonce";
+  var test3 = "Search for Beyonce on YouTube";
+  var test4 = "Find Beyonce on YouTube";</code></pre>
           </section>
       </div>
     </div>

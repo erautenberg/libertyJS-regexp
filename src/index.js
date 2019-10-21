@@ -8,6 +8,8 @@ import * as step7 from './7_escaping';
 import * as step9 from './9_quantifiers';
 import * as step10 from './10_greedy';
 import * as step11 from './11_groups';
+import * as step12 from './12_or';
+import * as step13 from './13_exercises';
 
 function showStep(step) {
   switch (step) {
@@ -77,7 +79,22 @@ function showStep(step) {
       console.log('\nGROUPS\n\n');
       step11.groups();
       break;
+
+    case 12:
+      // Step Twelve: Ors
+      console.log('\nOR (|)\n\n');
+      step12.ors();
+      break;
+
+    case 13:
+      // Step Thirteen: Exercises
+      console.log('\nEXERCISES\n\n');
+      step13.exercise1();
+      step13.exercise2();
+      step13.exercise3();
+      step13.exercise4();
+      break;
   }
 }
 
-showStep(11);
+showStep(13);
