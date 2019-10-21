@@ -1,0 +1,254 @@
+REGULAR EXPRESSIONS
+
+
+INTRO
+Hi everybody! I’m Emily Rautenberg, a Software Engineer at Comcast NBCUniversal. I currently work on a UX Engineering team in Comcast’s Experience Design Department. Today, I’m here to talk to you about Regular Expressions, which over the past year or so I’ve been utilizing a decent amount within my team.
+
+A Regular Expression is a sequence of characters that denotes a search pattern to be used on a set of a text. Today we are going to cover how to utilize regular expressions in JavaScript, but please know that this can be applied to tons of different languages, and even all kinds of text editors. Whether you’re using VS Code or Sublime, you can toggle on RegEx mode in your normal find and replaces. This even works in Excel.
+
+So before we start, I was wondering what everyone else’s backgrounds were. Who here has done any kind of data manipulation before? Have you ever had large sets of data you had to format, even in Excel? Great! Then there’s a good chance you all have had a use for regular expressions at some point in your careers. Has anyone here used or attempted to use Regular Expressions before? For those of you that have, do you honestly remember any of it?
+
+If you’re anything like me, maybe you tried googling a regular expression once, but if you couldn’t figure out what you needed faster than it would take to format your data by hand, you gave up. And then maybe you didn’t touch regular expressions again for another six months. Today, I want to show you how simple and powerful regular expressions can be once you break them down.
+
+
+START
+The link to my GitHub repo is up here if you would like to follow along on your machines, otherwise feel free to just watch my screen. There are some exercises at the end for all of us to work on together, so if you want to try them out yourselves, then you'll want to download the repo.
+
+Along the way, if you have any questions, feel free to stop me at any point! I've found this is way more valuable if it's a discussion instead of me just rambling for ninety minutes. Nobody wants that.
+
+I’ve supplied some great resources at the top here that I highly recommend. The second and third are mainly tutorials and reference, but throughout this workshop we will actually be using the first, Debuggex, which generates flow charts from our regular expressions which I’ve found to be incredibly useful to look at. Just so you know, I did not create the tool, I'm not getting paid to promote it, I just honestly think it's a great resource and will be utilizing it a ton throughout the next hour or so.
+
+So let’s get started!
+
+
+FIRST REGEXP
+So let’s create our first regular expression!
+
+First, there are two different ways to create a Regular Expression in JavaScript. One way is to use the RegExp constructor like on this first line. It takes in two different parameters, the first is the search pattern, in this case, the literal word “pattern” and the second is the list of flags to add to the regular expression. We’ll cover that in the next section, but for now you just need to know that this is the “global” flag.
+
+The second way, which is often used in text editor’s search and replaces, is to enclose your expression in the forward slashes, similarly to the way you create strings in most languages. In JavaScript you would use quotes or backticks, for regular expressions, you use slashes. Then, if you have any flags, you can add them to the end, after the slashes.
+
+So now, if I jump over to Debuggex, and type in our search pattern “pattern,” you’ll see the diagram update, and I’ll throw in our search string “Let's find the word 'pattern' in this string.” If I manipulate the starting and ending positions, you’ll see that it does find a match within the string. Just as a warning, this little matcher tool doesn’t always work exactly as you might expect unless you add your own custom unit tests below, but that’s a little beyond this talk. The important thing is that you get this awesome visual from your expression.
+
+If I jump back to our example, and try to use the JavaScript method “search,” which will return the position of a match if a match exists, on our test string, and I hit “Run,” you’ll see that a position was printed out, meaning there was in fact a match. This number corresponds to the position of the starting matching character in the string array, starting from 0. So I’m not going to count all of this, but if the L is the zero-th character, and i go one, two, blah, blah, blah, the “p” in “pattern” is the 21st character.
+
+Good so far?
+
+
+METHODS
+Great, now let’s talk about that search method a little more.
+
+These methods are specifically built into JavaScript and will be used throughout this tutorial. Other languages have similar built in functions, while text editors typically will just have a straightforward “match.” If a match is found in your data that fits your search terms, it gets highlighted, end of story.
+
+In JavaScript, we have 6 main methods we can utilize with Regular Expressions.
+
+Test is a method that you pair with an actual regular expression. So you create your variable assigned to “/pattern/“ then perform the “test” function on it. Test returns true if the expression finds a match in your test string, and false if it doesn’t.
+
+Search, Match, Split, and Replace are all methods of the String type in JavaScript.
+
+Search is what we used in the last example, and returns the position of the first match. If there is no match, it will return -1.
+
+Match returns an array of all of the found matches in the test string. If there are no matches, it will return null.
+
+Split will separate a string on a given delimiter, which in our case, can be an expression. Often this method is used to separate a string on every comma or space, but fun fact, you can separate it on a regular expression too.
+
+Replace is just how it sounds. You can replace a given match to a regular expression with a new string.
+
+Last is Execute, which is another method applied directly to the regular expression, not the string, and what I’ll explain later, is probably one of the most powerful tools. Exec returns an array containing the initial match, as well as all of the groups that are generated by the expression. We will get to groups in a little while—-which are my favorite part of RegEx.
+
+If we run test, search, match, split, replace, and exec on our same string, this is what we get.
+
+Test returns true, as expected, there is a match for the word “pattern” in this string.
+
+Search returns the number 15, before the FIRST instance of the word pattern is at position 15.
+
+Match returns all the matches, and in this example, we have the word pattern twice.
+
+Split separated our initial string into sections whenever the word pattern was found, so our first is “Let’s find the [space]“, our next is “[space] [apostrophe]”, and our third is “[space] in this string [period].”
+
+Replace switched out both instances of pattern in lowercase with pattern as uppercase.
+
+Execute returned an array of our match, as well as our groups. In this case, we don’t have groups yet, so no groups were printed.
+
+
+FLAGS
+Now let’s go back to those flags.
+
+There are five different flags we can use, though for this tutorial we’ll really only need the first two.
+
+The i flag is for case-insensitivity. If you do not care if your results are upper or lower case and you want to account for them all, you can add i to the end of your expression.
+
+The g flag is for global, which signals the expression to search an entire string. Otherwise, after it finds the first match, it basically gives up.
+
+The m flag is for multiline, so even if you use anchors to specify that your string has to start or end a certain way, it will treat each new line as a new starting point.
+
+If you are only dealing with the standard English language and using UTF-8, then you might not ever need the unicode flag. However, if you are working with other languages, special characters, or even emojis, then you will. Something like the letter a consists of one unicode code unit. An emoji, however, which is made up of two different characters, like the colon and parenthesis, actually takes up two units. If you want to be able to interpret single characters that are actually encoded with multiple character units, then you’ll need the u flag.
+
+Last is the y flag, which is for sticky. Sticky mode essentially tells the expression to search at a given place in the string by using the expression’s “lastIndex” value, which is defaulted to 0. If you set the expression’s last index to say, the position after the first match, which we know we can get with the search method, you can force the expression to start searching where it “left off” essentially.
+
+
+ANCHORS
+We just talked about how the multiline flag is helpful, even when you use anchors. So what are anchors?
+
+The special characters, the caret and the dollar sign, can be used to find exact matches at the start and/or end of a string.
+
+Let’s say we want to find the word “First” in a string, but only if it actually occurs at the beginning of a string, and the word “Fourth” only if it is at the end of the string. So we have two different strings, one with the word First at the beginning and Fourth at the end, and one with Fourth at the beginning and First at the end. They also both have Fourth written twice, just to make sure this is doing what we want.
+
+First, let’s take a look at Debbugex. Notice how the caret and dollar signs are slightly bolded in the diagram. This is how you know it is a special character and not just looking for the literal symbol “^”.
+
+Now, if we jump back and run our code, you’ll see that a search on the expression looking for “First” at the beginning yielded position 0 for the first string, and -1, a failure, for the second. The same goes for Fourth. The first string found position 26 as a match, and the second as a failure. Remember how we added the word Fourth twice? If we actually count out our 26 characters in this first string, our match starts at the second instance of Fourth, which is exactly where we want it. If we didn’t have this $ anchor, then the first instance of fourth, here, would have succeeded as a match.
+
+
+SETS AND RANGES
+So far we have only been dealing with exact strings that we are looking for. It is also possible to query from a set of characters by using square brackets.
+
+If we have [abc] in brackets, we are basically saying I need a character that is any one of these things, an a, or a b, or a c. Let’s take a look at Debuggex real quick. You’ll notice it now says “one of” above the abc. If I add extra text outside the brackets, you’ll see the “one of” title does not apply.
+
+Going back, if I make a string filled with these three characters and run match on it, I will get every instance of a, b, and, c in the string. For anyone who has not seen a loop before, no worries, all I’m doing here is getting an exact count on the number of a’s, b’s, and c’s there are in the match array.
+
+Additionally, you can supply ranges of characters to the bracket notation. Instead of writing “def,” I can write “d-f” with the hyphen. I then have a similar loop, so if we run these match functions, I get the following counts. You are welcome to sit there are count the exact number of a’s, b’s, c’s, d’s, e’s, and f’s, by hand, but I think the computer’s got it covered.
+
+It’s also worth noting that with this hyphen notation, you can span digits, so 0-9, and even upper and lowercase. A-Z is different than a-z, however, A-z will encompass both. This is because the ranges are based on actual ASCII Values. If you look up an ascii table, you can see what characters are next to each other.
+
+How’s everyone doing so far? OK?
+
+
+CHARACTER GROUPS
+So character ranges are super helpful, but you don’t want to have to sit there and list out every possible character all the time, which is why we have short hands!
+
+Our first short hand is \d, which means any digit character.
+Slash W is any alphanumeric character, which includes digits, letters, and some symbols.
+Slash s is any whitespace character, like spaces, tabs, or newlines.
+
+Our next three shorthand are essentially the inverse of the first three. Basically, a lowercase letter shorthand means look for this thing, and an uppercase letter shorthand means look for NOT this thing. So capital slash D is any non-digit character, capital W is not an alphanumeric character, and capital S is not a whitespace character.
+
+Lastly is the period, which is one of the most powerful symbols. It will look for any character that isn’t a newline. For anyone not familiar, the encoding for a newline the backslash n.
+
+If we hop over to Debuggex, you can see that again the little flowchart symbol is sort of bolded. If I type some random garbage into the test block, you can see the different character groups in action.
+
+There is one more character group I want to show you before we move on, which is called a “word boundary.” Word boundaries are used to specify that there should be separation before the match you are looking for, and the rest of the string.
+
+For example, if we take a sentence that contains both the words “Java” and “JavaScript,” trying to match for just the word “Java” would returned two results. By using word boundaries, however, we can match just the first instance.
+ Similarly to \d, \w, and \s, \b has an inverse as well. Capital slash B means no word boundary is present, which is a way to grab the second instance of Java, in the word “JavaScript” if we wanted to.
+
+Let’s run all this and see what we get.
+In the first string, we get a match for a digit.
+Then we get matches for all the alphanumeric characters (no spaces).
+Next we get literally just spaces.
+Then we have everything that’s not a digit—so that entire sentence minus the number 6.
+Next is not an alphanumeric character, so it’s the spaces and the period.
+Now we have no spaces, so it’s basically the same as the \w except this includes the period at the end.
+And lastly, we have the period, so it’s literally the entire sentence.
+
+
+ESCAPING SPECIAL CHARACTERS
+Similarly to using special characters in JavaScript or HTML, certain characters are already reserved as one thing in Regular Expressions, like the period character. In order to signify the actual special character itself, and not the representation RegEx has for it, we need to “escape” it. To “escape” the character, you simply add a backslash (just like the character groupings in the previous section).
+
+The following example will print out all instances of the special characters in our expression. Notice how each character is escaped with a back slash and they are all contained in the bracket notation.
+
+
+LENGTHS
+It is also possible to specify the number of times a pattern occurs by using curly braces.
+You can specify either a single number, which indicates exactly how many times a pattern should occur, or a range, stating the minimum and maximum number of allowed occurrences.
+
+For example, let’s say you are looking for a date in a specific format. You don’t care if the month or day are one or two digits, but you do care that the year is four digits.
+
+Let’s pop this into Debuggex to see the new flow chart. No we have loops around the character codes denoting how many occurrences there should be. Now let’s check our expression against some valid and invalid dates and see what happens. It totally ignores the last case, which is perfect.
+
+
+QUANTIFIERS
+In addition to specifying exact occurrences of a pattern using the curly braces, you can also specify some less strict quantities.
+
+There are three special characters that can be used to quantify occurrences: the plus sign, the question mark, and the asterisk. The plus sign means a pattern can occur one or more times, so at least once, the question mark means it can happen zero or once, so either not at all, or only one time, and the asterisk means zero or more, so not at all, or infinitely many times, we don’t care.
+
+Let’s hop over to Debuggex to see how the flow changes. We’ll steal our digit example and use the string 12345. The plus sign works on the entire string, whereas the question mark actually only works on the individual numbers. Then again, if I use the asterisk, the entire string is a match.
+
+If we run our JavaScript, you’ll see first we tested on a string “no nums,” and we had null because the plus sign asks for at least once occurrence of a digit, and it failed. The question mark means we can match, even if it doesn’t occur at all, so every character works correctly and returns a match, and the same goes for the asterisk.
+
+Again, using the number string, you can see the breakdown for matches. The plus sign returned one match, the question mark returned a match for each individual digit, and the asterisk returned one match, however, there’s something kind of weird about the asterisk.
+
+Does everyone see this extra comma here at the end? The asterisk actually returned 2 matches, whereas the plus sign only returned one. This is because the asterisk will match virtually anything, right? That includes an empty string. So, when we get to the end of the string and have finished finding our matches, the asterisk will then match again against this empty string that is left.
+
+
+GREEDY
+In the last example, we saw that the plus sign and the asterisk actually found one number match, whereas the question mark found a bunch of individual matches. This is because the plus sign and the asterisk are “greedy” quantifiers. By default, they consume as much as possible in the string to find a match. They go as far forward as possible looking for a match, and when a test fails, they only ever backtrack one character, then see if that works, then backtrack again on a failure. Let’s go through an example of why this can be a problem.
+
+Look at the string “’This demo is about "Regular Expressions" in "JavaScript”’.” If we want to return only the words contained in quotes, we might try something like “.+”, which is an expression looking for something that starts with a double quote, then has at least one occurrence of something (the period), then another double quote.
+
+Let’s look at the diagram real quick. If we add our string into the test field, you’ll notice that this entire section gets highlighted as a match. That’s because the plus sign is greedy. We find this first double quote, then just look for any character until that fails, which in this case will be when it reaches the end of the string. Then it’ll start trying to find the next set of double quotes, and because it’s reached the end of the string, it will have to back track a character. Once it does that, it will find the quotes here after JavaScript, and bam, it’s found a match.
+
+Technically, it did exactly what we asked, but not necessarily what we wanted. In order to make the expression repeat as few times as possible, we need to make the quantifier lazy, which basically is a signal for it to search for those double quotes as soon as possible instead of waiting until the end.
+
+To do that, we add the question mark after the plus sign. Unfortunately, you can’t see much of a change in the diagram, however, you’ll notice that the expression now generates two separate matches. This is all also true of the asterisk quantifier. If I switch out the plus sign real quick, you’ll see it functions the same way (but obviously this way, we no longer care if there is content in between the quotes, whereas the plus sign was looking for at least one character).
+ If I run our code, you’ll see in the greedy way, there is one match, and in the lazy way, there are two matches.
+
+
+GROUPS
+At this point, you have all of the basic tools you need to build some simple, but still very powerful regular expressions. However, I have two more topics I’d like to introduce you to before we go through some exercises together.
+
+The first is my absolute favorite thing about Regular Expressions and what I think makes them truly amazing. Regular Expressions actually have to ability store, then manipulate individual matches using something called a group.
+
+In order to create a group, all you have to do is wrap your expression in parenthesis. Let’s go to Debuggex to work through an example.
+
+Let’s say we have the string “LastName, FirstName” and we want change this to be “FirstName LastName.” How do we first actually make an expression that grabs the different names?
+
+So we can use the \w character code to grab alphanumeric characters, and say that they need to occur at least once by adding a plus sign. We can also add a comma and space to separate them. Does this make sense so far?
+
+So now, if we add the parenthesis to these two section, look what happens to the diagram. You actually get labels for different groups, as well as a number assigned to each group. Great! So now that we have these groups…what do we do with them?  I mentioned that in JavaScript, we have an execute method. If we use this execute method on the expression, we get an array with all of the groups. If I run this, we can print out the array. The first element is the complete match, and the next elements are the groups. So LastName, FirstName is our match, then we have LastName, which is group 1, or group[1], and FirstName, which is group2, or group[2].
+
+We also have access to the string’s replace method in JavaScript. We can actually create a string to replace the old one with, that uses these groupings, simply by using a dollar sign. If we write $1, that signals to javascript that you want to access whatever is in the first position of expression’s matches. If you use $2, then you want the second. So, we can replace LastName comma space FirstName with FirstName space LastName, simply by writing dollar sign two space dollar sign one, and pass it into the string replace function.
+
+When we run it, we actually get the new format we wanted!
+
+In addition to creating “capturing” groups like we just did, you can also create “non-capturing” groups. For example, let’s say you want to add a range to a set pattern.
+
+If we go to Debuggex and try to find the word pattern only once or twice in a string without making it a group, then you end up repeating only the n, which is not what we wanted. If we wrap the entire word “pattern” in parenthesis, however, it becomes a group and the {1,2} range gets applied to the entire group. Great! But, what if we don’t actually care about this group later on? What if we end up with a huge expression at some point with multiple groups and we don’t have to sort through which groups are important and which aren’t?
+
+Well, we can make this group non-capturing by adding “question mark colon” in front, like this. Now, if we run our code, you’ll notice that the exec function only prints out the first match. It doesn’t print out our groups with it because there are no saved groups!
+
+
+DIFFERENCES IN OR
+OK, there’s one section left and then we can practice. Hopefully you’re all still doing OK! And don’t worry, this last section is probably the easiest so far haha.
+
+Now that we’ve talked about making groups, I can also show you how to say you want something OR another thing by using the logical or symbol, the pipe, which is very similar to many programming languages.
+
+Let’s go back to Debuggex one more time. Remember when we made our [abc] set? Well, what if we use that bracket notation inside of another expression. Raise your hand if you spell the word gray with an a? Raise your hand if you spell it with an e? Raise your hand if you don’t care?? Awesome! Let’s make an expression that doesn’t care if you use gray or grey.
+
+One way to do that is to put a and e in brackets, and surround it with the rest of the word gray. Now we are asking for the letter g, the letter r, then the letter a or e, we don’t care, then y. For simple sets of data like two characters, this is fine, but when your expressions start to get more complex, you might want to consider using Ors.
+
+So, what happens if we just get rid of the brackets, and add our pipe symbol? Well, that’s not really what we wanted, is it? You will notice though, that our chart has now been broken onto two lines. We can either get g-r-a, or e-y.
+
+Well, that’s not what we want, so how do you think we could solve this while still using the or symbol?
+
+We could just type gray and grey with a pipe in the middle, sure! But that leads to some repetitiveness, right?
+
+The problem we’re having right now, is asking the same problem we were having in our last section where we tried to add the range to the word pattern. How did we solve that? We wrapped pattern in a group. So what if we wrap a and e in a group?
+
+Well, that chart makes a lot more sense right?  And, it’s virtually the same as the bracket notation. However, when your expressions get much long, this is probably going to be much easier to use.
+
+Alright, how is everyone doing? Are you totally fried or are you up for some examples?
+
+I mean even if you said no I was probably going to do them anyway so….here we go.
+
+
+EXERCISES
+
+Prompt 1
+For our first example, we’re going to work through a case for regular expressions that you probably experience all the time: username requirements. Every time you create a new account, there are certain rules you have to adhere. The same goes for setting a password, right?
+
+So let’s say there are 4 rules you have to follow for your new username:
+- it has to be between 3 and 16 characters in length
+- the case doesn’t matter
+- it can’t contain any special characters except for the underscore
+- it cannot start with a number
+
+I’m going to go back to Debuggex and you guys talk me through what you want to do, OK?
+
+Prompt 2
+Now let’s go through some groups examples because they’re my favorite haha. If we have a string of names, how do we extract only the names that have a title Mr., Mrs., Ms., or Dr.?
+
+Prompt 3
+Now that we have the names we want (Lord Voldemort’s not getting invited to this party), how would we reformat them? Let’s say instead of Title FirstName LastName, we want LastName comma FirstName Title?
+
+Prompt 4
+OK…I have one more example for you guys if you’re up for it. It’s the longest one, but is a totally real world example, because this is actually something I had to write last week for work haha.

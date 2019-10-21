@@ -2,7 +2,7 @@
 
 export function greedylazy() {
   greedy();
-  lazy();
+  // lazy();
 }
 
 function greedy() {

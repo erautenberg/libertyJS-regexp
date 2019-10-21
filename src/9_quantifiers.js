@@ -14,10 +14,10 @@ export function quantifiers() {
   zeroOrOne(str1);
   zeroOrMore(str1);
 
-  console.log(str2);
-  oneOrMore(str2);
-  zeroOrOne(str2);
-  zeroOrMore(str2);
+  // console.log(str2);
+  // oneOrMore(str2);
+  // zeroOrOne(str2);
+  // zeroOrMore(str2);
 }
 
 function oneOrMore(str) {

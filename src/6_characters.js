@@ -12,14 +12,14 @@ export function characters() {
 
   var str = "This contains all 6 types of characters.";
 
-  char_nums(str);
-  char_words(str);
-  char_space(str);
-  char_noNums(str);
-  char_noWords(str);
-  char_noSpace(str);
-  char_all(str);
-  char_boundary(str);
+  // char_nums(str);
+  // char_words(str);
+  // char_space(str);
+  // char_noNums(str);
+  // char_noWords(str);
+  // char_noSpace(str);
+  // char_all(str);
+  // char_boundary(str);
 }
 
 function char_nums(str) {

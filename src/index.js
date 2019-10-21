@@ -90,11 +90,11 @@ function showStep(step) {
       // Step Thirteen: Exercises
       console.log('\nEXERCISES\n\n');
       step13.exercise1();
-      step13.exercise2();
-      step13.exercise3();
-      step13.exercise4();
+      // step13.exercise2();
+      // step13.exercise3();
+      // step13.exercise4();
       break;
   }
 }
 
-showStep(13);
+showStep(1);

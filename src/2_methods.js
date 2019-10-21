@@ -14,12 +14,12 @@ export function methods() {
   var str = "Let's find the pattern 'pattern' in this string.";
   console.log(str);
 
-  method_test(regex, str);
-  method_search(regex, str);
-  method_match(regex, str);
-  method_split(regex, str);
-  method_replace(regex, str);
-  method_exec(regex, str);
+  // method_test(regex, str);
+  // method_search(regex, str);
+  // method_match(regex, str);
+  // method_split(regex, str);
+  // method_replace(regex, str);
+  // method_exec(regex, str);
 }
 
 function method_test(regex, str) {

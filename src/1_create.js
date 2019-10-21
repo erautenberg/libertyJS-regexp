@@ -2,8 +2,8 @@
 
 export function createRegEx() {
   createRegExLong();
-  createRegExShort();
-  findPosition();
+  // createRegExShort();
+  // findPosition();
 }
 
 function createRegExLong() {

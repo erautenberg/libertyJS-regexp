@@ -13,12 +13,12 @@ export function flags() {
   var strMulti = `pattern
   pattern`;
 
-  flag_noCase(str);
-  flag_global(str);
-  flag_noCaseGlobal(str);
-  flag_multi(strMulti);
-  flag_unicode(str);
-  flag_sticky(str);
+  // flag_noCase(str);
+  // flag_global(str);
+  // flag_noCaseGlobal(str);
+  // flag_multi(strMulti);
+  // flag_unicode(str);
+  // flag_sticky(str);
 }
 
 function flag_noCase(str) {

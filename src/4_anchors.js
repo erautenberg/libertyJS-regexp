@@ -11,7 +11,7 @@ export function anchors() {
   printAnchors(str1, start, end);
 
   var str2 = "Fourth Fourth Third Second First";
-  printAnchors(str2, start, end);
+  // printAnchors(str2, start, end);
 }
 
 function printAnchors(str, start, end) {
