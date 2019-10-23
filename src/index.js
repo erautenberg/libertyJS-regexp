@@ -1,5 +1,3 @@
-import { methods } from './2_methods';
-
 export * from './1_create';
 export * from './2_methods';
 export * from './3_flags';
