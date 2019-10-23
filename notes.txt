@@ -2,7 +2,7 @@ REGULAR EXPRESSIONS
 
 
 INTRO
-Hi everybody! I’m Emily Rautenberg, a Software Engineer at Comcast NBCUniversal. I currently work on a UX Engineering team in Comcast’s Experience Design Department. Today, I’m here to talk to you about Regular Expressions, which over the past year or so I’ve been utilizing a decent amount within my team.
+Hi everybody! I’m Emily Rautenberg, a Software Engineer at Comcast NBCUniversal. I currently work on a UX Engineering team in Comcast’s Experience Design Department. Today, I’m here to talk to you about Regular Expressions!
 
 A Regular Expression is a sequence of characters that denotes a search pattern to be used on a set of a text. Today we are going to cover how to utilize regular expressions in JavaScript, but please know that this can be applied to tons of different languages, and even all kinds of text editors. Whether you’re using VS Code or Sublime, you can toggle on RegEx mode in your normal find and replaces. This even works in Excel.
 
@@ -22,15 +22,15 @@ So let’s get started!
 
 
 FIRST REGEXP
-So let’s create our first regular expression!
+Let’s create our first regular expression!
 
 First, there are two different ways to create a Regular Expression in JavaScript. One way is to use the RegExp constructor like on this first line. It takes in two different parameters, the first is the search pattern, in this case, the literal word “pattern” and the second is the list of flags to add to the regular expression. We’ll cover that in the next section, but for now you just need to know that this is the “global” flag.
 
-The second way, which is often used in text editor’s search and replaces, is to enclose your expression in the forward slashes, similarly to the way you create strings in most languages. In JavaScript you would use quotes or backticks, for regular expressions, you use slashes. Then, if you have any flags, you can add them to the end, after the slashes.
+The second way, which is often used in text editor’s search and replaces, is to enclose your expression in the forward slashes, similarly to the way you create something like a string in most languages. In JavaScript you would use quotes or backticks for strings, for regular expressions, you use slashes. Then, if you have any flags, you can add them to the end, after the slashes.
 
 So now, if I jump over to Debuggex, and type in our search pattern “pattern,” you’ll see the diagram update, and I’ll throw in our search string “Let's find the word 'pattern' in this string.” If I manipulate the starting and ending positions, you’ll see that it does find a match within the string. Just as a warning, this little matcher tool doesn’t always work exactly as you might expect unless you add your own custom unit tests below, but that’s a little beyond this talk. The important thing is that you get this awesome visual from your expression.
 
-If I jump back to our example, and try to use the JavaScript method “search,” which will return the position of a match if a match exists, on our test string, and I hit “Run,” you’ll see that a position was printed out, meaning there was in fact a match. This number corresponds to the position of the starting matching character in the string array, starting from 0. So I’m not going to count all of this, but if the L is the zero-th character, and i go one, two, blah, blah, blah, the “p” in “pattern” is the 21st character.
+If I jump back to our example, and try to use the JavaScript method “search,” which will return the position of a match if a match exists, on our test string, you’ll see that a position was printed out, meaning there was in fact a match. This number corresponds to the position of the starting matching character in the string array, starting from 0. So I’m not going to count all of this, but if the L is the zero-th character, and i go one, two, blah, blah, blah, the “p” in “pattern” is the 21st character.
 
 Good so far?
 

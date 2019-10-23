@@ -12,9 +12,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "preinstall": "npm install -g webpack && npm install -g webpack-cli && npm install -g webpack-dev-server",
+    "start": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
