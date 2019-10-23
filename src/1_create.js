@@ -1,6 +1,10 @@
 /* Creating a new RegEx */
 
+createRegEx();
+
 export function createRegEx() {
+  console.log('\nCREATING A NEW REGEX\n\n');
+
   createRegExLong();
   // createRegExShort();
   // findPosition();

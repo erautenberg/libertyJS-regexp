@@ -1,6 +1,10 @@
 /* Escaping Special Characters */
 
+// special();
+
 export function special() {
+  console.log('\nESCAPING SPECIAL CHARACTERS\n\n');
+
   // As you probably noticed by now, RegEx uses special characters to declare specific behavior
   // If the pattern you are looking for actually contains a special character,
   // similarly to HTML, Javascript, etc., you will have to escape it using the backslash, '\'

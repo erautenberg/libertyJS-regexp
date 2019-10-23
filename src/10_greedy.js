@@ -1,14 +1,20 @@
 /* Greedy vs. Lazy Quantifiers */
 
+// greedylazy();
+
 export function greedylazy() {
-  greedy();
-  // lazy();
+  console.log('\nGREEDY VS. LAZY QUANTIFIERS\n\n');
+
+  var str = 'This demo is about "Regular Expressions" in "JavaScript"';
+  console.log(str);
+
+  // greedy(str);
+  // lazy(str);
 }
 
-function greedy() {
+function greedy(str) {
   // try to search for all "..." in order to replace with '...' the greedy way
   var regGreedy = /".+"/g;
-  var str = 'This demo is about "Regular Expressions" in "JavaScript"';
 
   // this will yield "Regular Expressions" in "JavaScript" instead of just "Regular Expressions"
   var greedyMatch = str.match(regGreedy);
@@ -17,10 +23,9 @@ function greedy() {
 }
 
 
-function lazy() {
+function lazy(str) {
   // try to search for all "..." the lazy way
   var regLazy = /".+?"/g;
-  var str = 'This demo is about "Regular Expressions" in "JavaScript"';
 
   var lazyMatch = str.match(regLazy);
   console.log(`${regLazy}:`, lazyMatch);

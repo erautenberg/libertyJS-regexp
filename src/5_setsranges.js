@@ -1,10 +1,14 @@
 /* Sets and Ranges */
 
+// setsranges();
+
 export function setsranges() {
+  console.log('\nSETS AND RANGES\n\n');
+
   // It's possible to query from a set of characters
   var abc = /[abc]/g; // essentially a or b or c
   var abcStr = "How many a's, b's, and c's are in this sentence?"
-  countChars(abcStr, abc, 'a', 'b', 'c');
+  // countChars(abcStr, abc, 'a', 'b', 'c');
 
   // You can also create ranges
   var def = /[d-f]/g; // d or e or f

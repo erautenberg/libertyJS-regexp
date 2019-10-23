@@ -1,6 +1,10 @@
 /* Anchors: ^, $  */
 
+// anchors();
+
 export function anchors() {
+  console.log('\nANCHORS\n\n');
+
   // The special characters ^ and $ are called anchors, and match at the beginning and end of text, respectively
 
   var start = /^First/g; // check if "First" is at the beginning of the string
@@ -8,7 +12,7 @@ export function anchors() {
 
   // even though Fourth is twice, only the one at the end will be a match
   var str1 = "First Second Third Fourth Fourth";
-  printAnchors(str1, start, end);
+  // printAnchors(str1, start, end);
 
   var str2 = "Fourth Fourth Third Second First";
   // printAnchors(str2, start, end);

@@ -1,100 +1,13 @@
-import * as step1 from './1_create';
-import * as step2 from './2_methods';
-import * as step3 from './3_flags';
-import * as step4 from './4_anchors';
-import * as step5 from './5_setsranges';
-import * as step6 from './6_characters';
-import * as step7 from './7_escaping';
-import * as step9 from './9_quantifiers';
-import * as step10 from './10_greedy';
-import * as step11 from './11_groups';
-import * as step12 from './12_or';
-import * as step13 from './13_exercises';
-
-function showStep(step) {
-  switch (step) {
-    case 1:
-    default:
-      // Step One: Creating a new RegEx
-      console.log('\nCREATING A NEW REGEX\n\n');
-      step1.createRegEx();
-      break;
-
-    case 2:
-      // Step Two: Methods of RegEx and Strings
-      console.log('\nMETHODS OF REGEX AND STRINGS\n\n');
-      step2.methods();
-      break;
-
-    case 3:
-      // Step Three: Flags
-      console.log('\nFLAGS\n\n');
-      step3.flags();
-      break;
-
-    case 4:
-      // Step Four: Flags
-      console.log('\nANCHORS\n\n');
-      step4.anchors();
-      break;
-
-    case 5:
-      // Step Five: Sets and Ranges
-      console.log('\nSETS AND RANGES\n\n');
-      step5.setsranges();
-      break;
-
-    case 6:
-      // Step Six: Character Sets
-      console.log('\nCHARACTER SETS\n\n');
-      step6.characters();
-      break;
-
-    case 7:
-      // Step Seven: Escaping Special Characters
-      console.log('\nESCAPING SPECIAL CHARACTERS\n\n');
-      step7.special();
-      break;
-
-    case 8:
-      // Step Eight: Lengths
-      console.log('\nLENGTHS\n\n');
-      step8.lengths();
-      break;
-
-    case 9:
-      // Step Nine: Quantifiers
-      console.log('\nQUANTIFIERS\n\n');
-      step9.quantifiers();
-      break;
-
-    case 10:
-      // Step Ten: Greedy vs Lazy
-      console.log('\nGREEDY VS. LAZY QUANTIFIERS\n\n');
-      step10.greedylazy();
-      break;
-
-    case 11:
-      // Step Eleven: Groups
-      console.log('\nGROUPS\n\n');
-      step11.groups();
-      break;
-
-    case 12:
-      // Step Twelve: Ors
-      console.log('\nOR (|)\n\n');
-      step12.ors();
-      break;
-
-    case 13:
-      // Step Thirteen: Exercises
-      console.log('\nEXERCISES\n\n');
-      step13.exercise1();
-      // step13.exercise2();
-      // step13.exercise3();
-      // step13.exercise4();
-      break;
-  }
-}
-
-showStep(1);
+export * from './1_create';
+export * from './2_methods';
+export * from './3_flags';
+export * from './4_anchors';
+export * from './5_setsranges';
+export * from './6_characters';
+export * from './7_escaping';
+export * from './8_lengths';
+export * from './9_quantifiers';
+export * from './10_greedy';
+export * from './11_groups';
+export * from './12_or';
+export * from './13_exercises';

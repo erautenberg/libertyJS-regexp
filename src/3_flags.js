@@ -1,6 +1,10 @@
 /* Flags */
 
+// flags();
+
 export function flags() {
+  console.log('\nFLAGS\n\n');
+
   // There are 5 Javascript-specific flags  ->  i, g, m, u, and y
   //   i - case-insensitive (/pattern/ will return results for "pattern" or "PATTERN" or "pATteRn")
   //   g - global (search for all matches in a string instead of just one)
@@ -12,6 +16,9 @@ export function flags() {
 
   var strMulti = `pattern
   pattern`;
+
+  console.log(str);
+  console.log(strMulti);
 
   // flag_noCase(str);
   // flag_global(str);

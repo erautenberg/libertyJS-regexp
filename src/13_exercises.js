@@ -1,4 +1,17 @@
-export function exercise1() {
+/* Exercises */
+
+// exercises();
+
+export function exercises() {
+  console.log('\nEXERCISES\n\n');
+
+  // exercise1();
+  // exercise2();
+  // exercise3();
+  // exercise4();
+}
+
+function exercise1() {
   console.log('\nPROMPT 1');
 
   // We know the ENTIRE username must match the requirements, so let's start there:
@@ -47,7 +60,7 @@ export function exercise2() {
   console.log(`${names}`, res);
 }
 
-export function exercise3() {
+function exercise3() {
   console.log('\nPROMPT 3');
 
   // We might have to update our RegEx first
@@ -65,7 +78,7 @@ export function exercise3() {
   console.log(str2);
 }
 
-export function exercise4() {
+function exercise4() {
   console.log('\nPROMPT 4');
 
   // First, let's create strings for a few different test cases

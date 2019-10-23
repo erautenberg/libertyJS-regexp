@@ -1,6 +1,10 @@
 /* Character Groups */
 
+// characters();
+
 export function characters() {
+  console.log('\nCHARACTER SETS\n\n');
+
   // There are many different character codes that can be used as shorthands for groupings of characters
   //   \d - any digit character (0-9)
   //   \w - any alphanumeric character (a-z, A-Z, 0-9, and some symbols)
@@ -11,6 +15,7 @@ export function characters() {
   //   . - any character that isn't a newline (\n)
 
   var str = "This contains all 6 types of characters.";
+  console.log(str);
 
   // char_nums(str);
   // char_words(str);
