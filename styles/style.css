@@ -1,26 +1,10 @@
 body {
     font-family: 'Muli', sans-serif;
-    /* color: #7195a8;
-    background: #161b1d; */
     padding: 25px;
 }
 
 a {
     color: #257fad;
-}
-
-button {
-    /* background-color: #d22d72; */
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    margin-right: 8px;
-    margin-bottom: 5px;
-    padding: 8px;
-}
-
-button:hover {
-    /* background-color: #257fad; */
 }
 
 pre {
@@ -33,20 +17,15 @@ li {
 }
 
 h1 {
-    /* font-variant: small-caps; */
-    /* color: #d22d72; */
     margin-bottom: 5px;
 }
 
 h2 {
-    /* color: #6b6bb8; */
     margin-top: 30px;
     margin-bottom: 5px;
 }
 
 .subtitle {
-    /* color: #7195a8; */
-    /* font-variant: small-caps; */
     font-size: 1.4em;
     margin: 0;
 }
