@@ -16,7 +16,7 @@ populateCodeBlocks();
 
 // These functions just create strings that can be used in the <code> blocks in the HTML
 // and be formatted nicely with HighlightJS :)
-export function populateCodeBlocks() {
+function populateCodeBlocks() {
   renderCreate();
   renderMethods();
   renderFlags();
