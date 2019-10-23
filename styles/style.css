@@ -1,5 +1,5 @@
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Muli', sans-serif;
     /* color: #7195a8;
     background: #161b1d; */
     padding: 25px;
@@ -33,7 +33,7 @@ li {
 }
 
 h1 {
-    font-variant: small-caps;
+    /* font-variant: small-caps; */
     /* color: #d22d72; */
     margin-bottom: 5px;
 }
@@ -46,6 +46,7 @@ h2 {
 
 .subtitle {
     /* color: #7195a8; */
-    font-variant: small-caps;
-    font-size: 1.5em;
+    /* font-variant: small-caps; */
+    font-size: 1.4em;
+    margin: 0;
 }
