@@ -20,245 +20,166 @@
       <p>A Regular Expression, or RegEx, is a pattern that can be used to describe a specific subset of text. Regular expressions use various special character codes to denote sets of characters and shortcuts to generate a searchable pattern. This tutorial will specifically cover how to utilize regular expressions in JavaScript.</p>
 
       <div class="content">
-          <section>
-              <h2>Helpful Resources</h2>
-              <ul>
-                  <li><a href="https://www.debuggex.com/" target="_blank">https://www.debuggex.com/</a></li>
-                  <li><a href="https://javascript.info/regexp-introduction" target="_blank">https://javascript.info/regexp-introduction</a></li>
-                  <li><a href="https://eloquentjavascript.net/09_regexp.html" target="_blank">https://eloquentjavascript.net/09_regexp.html</a></li>
-              </ul>
-          </section>
+        <section>
+          <h2>Helpful Resources</h2>
+          <ul>
+            <li><a href="https://www.debuggex.com/" target="_blank">https://www.debuggex.com/</a></li>
+            <li><a href="https://javascript.info/regexp-introduction" target="_blank">https://javascript.info/regexp-introduction</a></li>
+            <li><a href="https://eloquentjavascript.net/09_regexp.html" target="_blank">https://eloquentjavascript.net/09_regexp.html</a></li>
+          </ul>
+        </section>
 
-          <section>
-              <h2>Creating a Regular Expression</h2>
-              <p>RegEx can be created using the JavaScript object "RegExp"</p>
-              <pre><code class="javascript">  var regLong = new RegExp("pattern", "g");</code></pre>
-              <p>RegEx can also be created using '/' to start and end the pattern, similarly to how strings use quotes or backticks</p>
-              <pre><code class="javascript">  var regShort1 = /pattern/;
-  var regShort2 = /pattern/g;</code></pre>
-              <p>Let's check out what this looks like on <a href="https://www.debuggex.com/r/WX61ZDcEIakJo2vE" target="_blank">Debuggex</a></p>
-          </section>
+        <section>
+          <h2>Creating a Regular Expression</h2>
+          <p>RegEx can be created using the JavaScript object "RegExp"</p>
+          <pre><code class="javascript" id='create-long'></code></pre>
+          <p>RegEx can also be created using '/' to start and end the pattern, similarly to how strings use quotes or backticks</p>
+          <pre><code class="javascript" id='create-short'></code></pre>
+          <p>Let's check out what this looks like on <a href="https://www.debuggex.com/r/WX61ZDcEIakJo2vE" target="_blank">Debuggex</a></p>
+        </section>
 
-          <section>
-              <h2>Methods of RegEx and Strings</h2>
+        <section>
+          <h2>Methods of RegEx and Strings</h2>
+          <p>There are 6 Javascript methods we will be using throughout this workshop:</p>
+          <pre><code class="javascript" id='methods-explanation'></code></pre>
+          <p>Let's test them out on the same regular expression and string as before.</p>
+          <pre><code class="javascript" id='methods-test'></code></pre>
+        </section>
 
-              <p>There are 6 Javascript methods we will be using throughout this workshop:</p>
-              <pre><code class="javascript">  regex.test(str);    // returns true or false if the regular expression finds matches in a string
-
-  str.search(regex);  // returns the position of the first match (-1 if no match)
-
-  str.match(regex);   // returns array of matches (null if no matches)
-
-  str.split(regex);   // separates the string on a given delimiter
-
-  str.replace(regex); // searches a string and replaces all instances of requested string with new string
-
-  regex.exec(str);    // returns an array containing the match (element 0) and the groups generated (elements 1-9)</code></pre>
-
-              <p>Let's test them out on the same regular expression and string as before.</p>
-              <pre><code class="javascript">  var regex = /pattern/g;
-  var str = "Let's find the pattern 'pattern' in this string.";
-
-  var test = regex.test(str);
-  var position = str.search(regex);
-  var match = str.match(regex);
-  var split = str.split(regex);
-  var replace = str.replace(regex, "PATTERN");
-  var exec = regex.exec(str);</code></pre>
-          </section>
-
-          <section>
-            <h2>Flags</h2>
-            <p>There are 5 JavaScript-specific tags we will be using in this workshop:</p>
-            <pre><code id="flags" class="javascript">  i // case-insensitive (/pattern/ will return results for "pattern" or "PATTERN" or "pATteRn")
-  g // global (search for all matches in a string instead of just one)
-  m // multiline (searches across multiple lines even when the ^ or $, or start and end of text, characters are used)
-  u // unicode support (important for characters encoded with more than 2 bytes--like emojis)
-  y // enables sticky mode (the search returns only a match found at the .lastIndex attribute)</code></pre>
+        <section>
+          <h2>Flags</h2>
+          <p>There are 5 JavaScript-specific tags we will be using in this workshop:</p>
+          <pre><code class="javascript" id="flags-explanation"></code></pre>
           <p>Let's take the following regular expressions and strings.</p>
-          <pre><code id="flags" class="javascript">  var regNoCase = /pattern/i;        // search for 'pattern' regardless of case
-  var regGlobal = /pattern/g;        // search for 'pattern' across entire string
-  var regNoCaseGlobal = /pattern/ig; // search for 'pattern' regardless of case across entire string
-  var regMulti = /pattern$/gm;       // search for ending in 'pattern' across all lines regardless of ^ and $ (see Anchors section)
-  var regUnicode = /😄/u;            // search for characters with multiple code units
-  var regSticky = /pattern/y;        // search for 'pattern' only at the location of .lastIndex
-  regSticky.lastIndex = 67;
+          <pre><code class="javascript" id="flags-test"></code></pre>
+        </section>
 
-  var str = "Let's search for 'paTtERn' to see how many instances of PATTERN or pattern there are in this string 😄";
-  var strMulti = `pattern
-    pattern`;</code></pre>
-          </section>
+        <section>
+            <h2>Anchors</h2>
+            <p>The special characters ^ and $ are called anchors, and match at the beginning and end of text, respectively</p>
+            <pre><code class="javascript" id="anchors"></code></pre>
+            <p>We can see which instance of "Fourth" is selected using <a href="https://www.debuggex.com/r/ydLadC5rdlaKuVxL
+              " target="_blank">Debuggex</a>.</p>
+        </section>
 
-          <section>
-              <h2>Anchors</h2>
-              <p>The special characters ^ and $ are called anchors, and match at the beginning and end of text, respectively</p>
-              <pre><code class="javascript">  var str1 = "First Second Third Fourth Fourth";
-  var str2 = "Fourth Fourth Third Second First";
-  var start = /^First/g; // check if "First" is at the beginning of the string
-  var end = /Fourth$/g; // check if "Fourth" is at the end of the string</code></pre>
-              <p>We can see which instance of "Fourth" is selected using <a href="https://www.debuggex.com/r/ydLadC5rdlaKuVxL
-                " target="_blank">Debuggex</a>.</p>
-          </section>
+        <section>
+            <h2>Sets and Ranges</h2>
+            <p>It's also possible to query from a set of characters</p>
+            <pre><code class="javascript" id="sets-set"></code></pre>
+            <p>You can also create custom ranges</p>
+            <pre><code class="javascript" id="sets-range"></code></pre>
+            <p><a href="https://www.debuggex.com/r/vP_gD0e1rHzNsyDF" target="_blank">Debuggex</a> also diagrams these sets for you.</p>
+        </section>
 
-          <section>
-              <h2>Sets and Ranges</h2>
-              <p>It's also possible to query from a set of characters</p>
-              <pre><code class="javascript">  var abc = /[abc]/g; // essentially a or b or c</code></pre>
-              <p>You can also create custom ranges</p>
-              <pre><code class="javascript">  var def = /[d-f]/g; // d or e or f</code></pre>
-              <p><a href="https://www.debuggex.com/r/vP_gD0e1rHzNsyDF" target="_blank">Debuggex</a> also diagrams these sets for you.</p>
-          </section>
+        <section>
+            <h2>Character Sets</h2>
+            <p>There are many different character codes that can be used as shorthands for groupings of characters.</p>
+            <pre><code class="javascript" id="characters-explanation"></code></pre>
+            <p>Let's take the following regular expressions and strings.</p>
+            <pre><code class="javascript" id="characters-test"></code></pre>
+          <p>There is a "cheatsheet" of all these character classes on <a href="https://www.debuggex.com/#cheatsheet" target="_blank">Debuggex</a> as well.</p>
+          <p>There is one more character class called a "word boundary," which also comes with an inverse. This is used to specify there should be a separation between your match and  the rest of the string.</p>
+          <pre><code class="javascript" id="characters-boundary"></code></pre>
+          <pre><code class="javascript" id="characters-boundary-test"></code></pre>
+        </section>
 
-          <section>
-              <h2>Character Sets</h2>
-              <p>There are many different character codes that can be used as shorthands for groupings of characters.</p>
-              <pre><code class="javascript">  \d // any digit character (0-9)
-  \w // any alphanumeric character (a-z, A-Z, 0-9, and some symbols)
-  \s // any whitespace character (space, tab, etc.)
-  \D // any NON-digit character
-  \W // any NON-alphanumeric character
-  \S // any NON-whitespace character
-  .  // any character that isn't a newline (\n)</code></pre>
-              <p>Let's take the following regular expressions and strings.</p>
-              <pre><code class="javascript">  var str = "This contains all 6 types of characters.";
+        <section>
+            <h2>Escaping Special Characters</h2>
+            <p>As you probably noticed by now, RegEx uses special characters to declare specific behavior. If the pattern you are looking for actually contains a special character, similarly to HTML, Javascript, etc., you will have to escape it using the backslash, '\'.</p>
+            <pre><code class="javascript" id="escaping"></code></pre>
+            <p>It might be difficult to see, but the way <a href="https://www.debuggex.com/r/SWFr20JUWzdZiaFq" target="_blank">Debuggex</a> differentiates between the RegEx special characters and the actual character is with blue versus black text.</p>
+        </section>
 
-  var nums = /\d/g;     // search for any digits
-  var words = /\w/g;    // search for any word characters
-  var space = /\s/g;    // search for whitespaces
-  var nonNums = /\D/g;  // search for non digits
-  var nonWords = /\W/g; // search for non word characters
-  var nonSpace = /\S/g; // search for non white spaces
-  var all = /./g;       // search for any non newline character</code></pre>
-            <p>There is a "cheatsheet" of all these character classes on <a href="https://www.debuggex.com/#cheatsheet" target="_blank">Debuggex</a> as well.</p>
-            <p>There is one more character class called a "word boundary," which also comes with an inverse. This is used to specify there should be a separation between your match and  the rest of the string.</p>
-            <pre><code class="javascript">  \b // any word boundary
-  \B // any NON-word boundary</code></pre>
-            <pre><code class="javascript">  var boundaryStr = "Java has a boundary, but JavaScript does not";
+        <section>
+            <h2>Lengths</h2>
+            <p>It's also possible to set how many of a certain character code are expected.</p>
+            <pre><code class="javascript" id="lengths"></code></pre>
+            <p><a href="https://www.debuggex.com/r/ni-meD3Oxj6pfujj" target="_blank">Debuggex</a> adds some nice loops to its flow chart when you add lengths.</p>
+        </section>
 
-  var boundary = /\bJava\b/g;
-  var nonBoundary = /Java\B/g;</code></pre>
-          </section>
+        <section>
+            <h2>Quantifiers</h2>
+            <p>There are also other special characters used to quantify occurances other than a specified range.</p>
+            <pre><code class="javascript" id="quantifiers-explanation"></code></pre>
+            <p>Consider the following strings and regular expressions.</p>
+            <pre><code class="javascript" id="quantifiers-test"></code></pre>
+          <p>Again, <a href="https://www.debuggex.com/r/uAYBBqscc7ei1-xe" target="_blank">Debuggex</a> provides some helpful loops to its diagram when you use these quantifiers.</p>
+        </section>
 
-          <section>
-              <h2>Escaping Special Characters</h2>
-              <p>As you probably noticed by now, RegEx uses special characters to declare specific behavior. If the pattern you are looking for actually contains a special character, similarly to HTML, Javascript, etc., you will have to escape it using the backslash, '\'.</p>
-              <pre><code class="javascript">  var reg = /[\.\?\!\(\)]/g;</code></pre>
-              <p>It might be difficult to see, but the way <a href="https://www.debuggex.com/r/SWFr20JUWzdZiaFq" target="_blank">Debuggex</a> differentiates between the RegEx special characters and the actual character is with blue versus black text.</p>
-          </section>
+        <section>
+            <h2>Greedy vs. Lazy Quantifiers</h2>
+            <p>As you may have noticed in the previous example, the regular expression found matches for each quanitfier. The results, however, were different for each quanitifier. This is because quantifiers are "greedy." Greedy quantifiers try to match at a given position and go as far forward as they can before the match fails. When it fails, it backtracks one position at a time.</p>
+            <p>Consider this "greedy" regular expression against this string.</p>
+            <pre><code class="javascript" id="greedy"></code></pre>
+            <p>In order to avoid this behavior, you can make the quantifier "lazy," or tell the expression to repeat the minimal number of times. This means they will try to match only the next position first, and after failing, will backtrack once and then trying matching again</p>
+            <pre><code class="javascript" id="lazy"></code></pre>
+            <p>Note: There are also "positive lookaheads" and "negative lookaheads" that can be considered, but are outside of the scope of this tutorial. <a href="https://www.regular-expressions.info/lookaround.html" target="_blank">https://www.regular-expressions.info/lookaround.html</a></p>
+        </section>
 
-          <section>
-              <h2>Lengths</h2>
-              <p>It's also possible to set how many of a certain character code are expected.</p>
-              <pre><code class="javascript">  // a digit of length 1-2, a digit of length 1-2, and a digit of length 4
-  var reg = /\d{1,2}-\d{1,2}-\d{4}/g</code></pre>
-              <p><a href="https://www.debuggex.com/r/ni-meD3Oxj6pfujj" target="_blank">Debuggex</a> adds some nice loops to its flow chart when you add lengths.</p>
-          </section>
+        <section>
+            <h2>Groups</h2>
+            <p>When trying to replace data using RegEx, it is possible to store the matched data in order to use it either later in the expression, or later in a string replace method, by using capturing groups.</p>
+            <p>This is my <b>favorite</b> part of RegEx!</p>
+            <pre><code class="javascript" id="groups-test"></code></pre>
+<p>Of course, <a href=" https://www.debuggex.com/r/ABnOtr-vYcfptlkW" target="_blank">Debuggex</a> gives you information about these groups.</p>
+            <p>If you use the <b>exec</b> function, you can view all of the matching groups where 0 is the entire string, and 1-N are the matching groups.</p>
+            <p>The matches can be referred to as $1, $2, etc. where the number corresponds to the order in which the group matches were found. The entire match can be referenced with <b>$&</b>.</p>
+            <pre><code class="javascript" id="groups-replace"></code></pre>
+            <p>Alternatively, you can also create "non-capturing" groups.</p>
+            <pre><code class="javascript" id="groups-noncapture"></code></pre>
+        </section>
 
-          <section>
-              <h2>Quantifiers</h2>
-              <p>There are also other special characters used to quantify occurances other than a specified range.</p>
-              <pre><code class="javascript">  + // one or more
-  ? // zero or one
-  * // zero or more</code></pre>
-              <p>Consider the following strings and regular expressions.</p>
-              <pre><code class="javascript">  var str1 = "no nums";
-  var str2 = "12345";
+        <section>
+            <h2>Or (|)</h2>
+            <p>Groups can also contains logical OR's (|)</p>
+            <pre><code class="javascript" id="ors-explanation"></code></pre>
+            <p>When used outside of a group, keep in mind the | will compare everything before it and everything after.</p>
+            <pre><code class="javascript" id="ors-test"></code></pre>
+        </section>
 
-  var plus = /\d+/g;     // digit occurs at least once
-  var question = /\d?/g; // digit occurs no more than once
-  var star = /\d*/g;     // digit does not occur or occurs infinitely many times</code></pre>
-            <p>Again, <a href="https://www.debuggex.com/r/uAYBBqscc7ei1-xe" target="_blank">Debuggex</a> provides some helpful loops to its diagram when you use these quantifiers.</p>
-          </section>
+        <section>
+            <h2>Exercise Questions</h2>
 
-          <section>
-              <h2>Greedy vs. Lazy Quantifiers</h2>
-              <p>As you may have noticed in the previous example, the regular expression found matches for each quanitfier. The results, however, were different for each quanitifier. This is because quantifiers are "greedy." Greedy quantifiers try to match at a given position and go as far forward as they can before the match fails. When it fails, it backtracks one position at a time.</p>
-              <p>Consider this "greedy" regular expression against this string.</p>
-              <pre><code class="javascript">  // try to search for all "..." in order to replace with '...' the greedy way
-  var regGreedy = /".+"/g;
-  var str = 'This demo is about "Regular Expressions" in "JavaScript"';</code></pre>
-              <p>In order to avoid this behavior, you can make the quantifier "lazy," or tell the expression to repeat the minimal number of times. This means they will try to match only the next position first, and after failing, will backtrack once and then trying matching again</p>
-              <pre><code class="javascript">  // try to search for all "..." the lazy way
-  var regLazy = /".+?"/g;
-  var str = 'This demo is about "Regular Expressions" in "JavaScript"';</code></pre>
-              <p>Note: There are also "positive lookaheads" and "negative lookaheads" that can be considered, but are outside of the scope of this tutorial. <a href="https://www.regular-expressions.info/lookaround.html" target="_blank">https://www.regular-expressions.info/lookaround.html</a></p>
-          </section>
+            <h3>Prompt 1</h3>
+            <p>Write a regular expression to confirm a user has entered a valid username, given the following requirements:
+              <ul>
+                <li>3-16 characters in length</li>
+                <li>case does not matter</li>
+                <li>contains no special characters other than _</li>
+              </ul>
+            </p>
+            <pre><code class="javascript" id="exercises-1"></code></pre>
 
-          <section>
-              <h2>Groups</h2>
-              <p>When trying to replace data using RegEx, it is possible to store the matched data in order to use it either later in the expression, or later in a string replace method, by using capturing groups.</p>
-              <p>This is my <b>favorite</b> part of RegEx!</p>
-              <pre><code class="javascript">  var reg = /(\w+), (\w+)/g; // this will look for a string that follows the "word, word" format
-  var str = "LastName, FirstName"; // let's make this FirstName LastName</code></pre>
-  <p>Of course, <a href=" https://www.debuggex.com/r/ABnOtr-vYcfptlkW" target="_blank">Debuggex</a> gives you information about these groups.</p>
-              <p>If you use the <b>exec</b> function, you can view all of the matching groups where 0 is the entire string, and 1-N are the matching groups.</p>
-              <p>The matches can be referred to as $1, $2, etc. where the number corresponds to the order in which the group matches were found. The entire match can be referenced with <b>$&</b>.</p>
-              <pre><code class="javascript">  var repl = "$2 $1";
-  var str2 = str.replace(reg, repl);</code></pre>
-              <p>Alternatively, you can also create "non-capturing" groups.</p>
-              <pre><code class="javascript">  // this will allow you to apply ranges and quanitfiers to a group without actually saving it
-  var regex = /(?:pattern){1,2}!/g;
-  var str3 = "pattern! patternpattern! patternpatternpattern!"</code></pre>
-          </section>
+            <h3>Prompt 2</h3>
+            <p>Extract only the full names from a string which have titles.
+              <ul>
+                <li>Mr.</li>
+                <li>Mrs.</li>
+                <li>Ms.</li>
+                <li>Dr.</li>
+              </ul>
+            </p>
+            <pre><code class="javascript" id="exercises-2"></code></pre>
 
-          <section>
-              <h2>Or (|)</h2>
-              <p>Groups can also contains logical OR's (|)</p>
-              <pre><code class="javascript">  (a|b) is essentially the same as [ab], but allows you access to the group
-  a|b also means a or b, but does not allow you access to the group</code></pre>
-              <p>When used outside of a group, keep in mind the | will compare everything before it and everything after.</p>
-              <pre><code class="javascript">  var reg1 = /gr(a|e)y/g; // gray or grey (and the same as /gr[ae]y/g)
-  var reg2 = /gra|ey/g; // gra or ey
-  var str = "Do you prefer gray or grey?";</code></pre>
-          </section>
+            <h3>Prompt 3</h3>
+            <p>Now, using the answer from Prompt 2, let's rearrange these names to be Last, First Title</p>
+            <pre><code class="javascript" id="exercises-3"></code></pre>
 
-          <section>
-              <h2>Exercise Questions</h2>
+            <h3>Prompt 4</h3>
+            <p>Think of a voice assistant which is able to interpret various utterances all leading to the same result. How could you account for someone asking Alexa or Google to search for something on YouTube?</p>
+            <p>Chain together three different regular expressions to account for the following utterances:
+              <ul>
+                <li>YouTube [QUERY]</li>
+                <li>Search YouTube for [QUERY]</li>
+                <li>Search/Find (for) [QUERY] on YouTube</li>
+              </ul>
+            </p>
+            <pre><code class="javascript" id="exercises-4"></code></pre>
+        </section>
 
-              <h3>Prompt 1</h3>
-              <p>Write a regular expression to confirm a user has entered a valid username, given the following requirements:
-                <ul>
-                  <li>3-16 characters in length</li>
-                  <li>case does not matter</li>
-                  <li>contains no special characters other than _</li>
-                </ul>
-              </p>
-              <pre><code class="javascript">  var valid = "th1s_1s_my_name";
-  var invalid = "0this-i$nt";</code></pre>
-
-              <h3>Prompt 2</h3>
-              <p>Extract only the full names from a string which have titles.
-                <ul>
-                  <li>Mr.</li>
-                  <li>Mrs.</li>
-                  <li>Ms.</li>
-                  <li>Dr.</li>
-                </ul>
-              </p>
-              <pre><code class="javascript">  var str = "Mr. Harry Potter, Ms. Hermione Granger, Mr. Ronald Weasley, Lord Voldemort, Mrs. Molly Weasley";</code></pre>
-
-              <h3>Prompt 3</h3>
-              <p>Now, using the answer from Prompt 2, let's rearrange these names to be Last, First Title</p>
-              <pre><code class="javascript">  var str = "Mr. Harry Potter, Ms. Hermione Granger, Mr. Ronald Weasley, Lord Voldemort, Mrs. Molly Weasley";</code></pre>
-
-              <h3>Prompt 4</h3>
-              <p>Think of a voice assistant which is able to interpret various utterances all leading to the same result. How could you account for someone asking Alexa or Google to search for something on YouTube?</p>
-              <p>Chain together three different regular expressions to account for the following utterances:
-                <ul>
-                  <li>YouTube [QUERY]</li>
-                  <li>Search YouTube for [QUERY]</li>
-                  <li>Search/Find (for) [QUERY] on YouTube</li>
-                </ul>
-              </p>
-              <pre><code class="javascript">  var test1 = "YouTube Beyonce";
-  var test2 = "Search YouTube for Beyonce";
-  var test3 = "Search for Beyonce on YouTube";
-  var test4 = "Find Beyonce on YouTube";</code></pre>
-          </section>
-
-          <section>
-            <h2>Thank you!</h2>
-          </section>
+        <section>
+          <h2>Thank you!</h2>
+        </section>
       </div>
     </div>
 
