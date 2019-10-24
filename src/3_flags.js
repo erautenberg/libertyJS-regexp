@@ -59,8 +59,8 @@ function flag_unicode(str) {
 }
 
 function flag_sticky(str) {
-  var regSticky = /pattern/y; // search for 'pattern' only at the location of .lastIndex
+  var regSticky = /pattern/iy; // search for 'pattern' only at the location of .lastIndex
   regSticky.lastIndex = 67;   // position 67 of the str is "pattern there are in this string 😄"
   var matchSticky = str.match(regSticky);
-  console.log('/pattern/y, 67:', matchSticky);
+  console.log('/pattern/iy, 67:', matchSticky);
 }

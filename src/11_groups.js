@@ -1,12 +1,12 @@
 /* Capturing Groups */
 
-// groups();
+groups();
 
 export function groups() {
   console.log('\nGROUPS\n\n');
 
   // capturing();
-  // noncapturing();
+  noncapturing();
 }
 
 function capturing() {
@@ -28,11 +28,10 @@ function capturing() {
 
 function noncapturing() {
     // this will allow you to apply ranges and quanitfiers to a group without actually saving it
-    var regex = /(?:pattern){1,2}!/g;
-    var str = "pattern! patternpattern! patternpatternpattern!"
+    var regex = /(?:ha){1,2}/g;
+    var str = "haha";
     console.log(str);
 
-    var matches = str.match(regex);
     var nogroups = regex.exec(str);
-    // console.log(`${regex}:`, matches, nogroups);
+    console.log(`${regex}:`, nogroups);
 }

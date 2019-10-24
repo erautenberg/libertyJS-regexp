@@ -1,6 +1,6 @@
 /* Creating a new RegEx */
 
-createRegEx();
+// createRegEx();
 
 export function createRegEx() {
   console.log('\nCREATING A NEW REGEX\n\n');

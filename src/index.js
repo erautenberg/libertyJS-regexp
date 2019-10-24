@@ -130,7 +130,8 @@ function renderEscaping() {
 }
 
 function renderLengths() {
-  document.getElementById('lengths').innerHTML = `  // a digit of length 1-2, a digit of length 1-2, and a digit of length 4
+  document.getElementById('lengths').innerHTML = `  var str = "Valid Dates: 06-08-2018, 6-8-2018, 06-8-2018, Invalid Date: 6-8-18";
+  // a digit of length 1-2, a digit of length 1-2, and a digit of length 4
   var reg = /\\d{1,2}-\\d{1,2}-\\d{4}/g`;
 }
 
@@ -165,8 +166,8 @@ function renderGroups() {
   var str2 = str.replace(reg, repl);`;
 
   document.getElementById('groups-noncapture').innerHTML = `  // this will allow you to apply ranges and quanitfiers to a group without actually saving it
-  var regex = /(?:pattern){1,2}!/g;
-  var str3 = "pattern! patternpattern! patternpatternpattern!"`;
+  var regex = /(?:ha){1,2}/g;
+  var str = "haha";`
 }
 
 function renderOrs() {

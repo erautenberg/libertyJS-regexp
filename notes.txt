@@ -10,6 +10,8 @@ So before we get started, who here has done any kind of data manipulation before
 
 Who here uses any kind of voice-enabled device? Alexa, Siri, Google?
 
+[ START WHITEBOARDING HOW VOICE UTTERANCES WORK ]
+
 What if you want to search for something on YouTube? Think of all the different ways you could tell your voice assistant to search for something on Youtube. You could say "Youtube This," or "Search YouTube for This." How do you know which words are important? If you try to remove the word "search" or "YouTube," what happens when the title of the thing you want CONTAINS those words?
 
 You could write some enormous if statements to make this happen, right? But that's messy, and tedious, and over time will probably become outdated as language and slang continues to evolve. A regular expression, however, in one line, can extract just the search term that you want.
@@ -184,6 +186,8 @@ Does everyone see this extra comma here at the end? The asterisk actually return
 
 GREEDY
 In the last example, we saw that the plus sign and the asterisk actually found one number match, whereas the question mark found a bunch of individual matches. This is because the plus sign and the asterisk are “greedy” quantifiers. By default, they consume as much as possible in the string to find a match. They go as far forward as possible looking for a match, and when a test fails, they only ever backtrack one character, then see if that works, then backtrack again on a failure. Let’s go through an example of why this can be a problem.
+
+The reason why the asterisk notation matches on the empty string at the end is because when you reach the end of the string, the you are say "zero or more" of this character can exist, technically, the empty string fits that description--there are zero occurances of the pattern in that empty string. Therefore, it "matches" and will get added to the matches array.
 
 Look at the string “’This demo is about "Regular Expressions" in "JavaScript”’.” If we want to return only the words contained in quotes, we might try something like “.+”, which is an expression looking for something that starts with a double quote, then has at least one occurrence of something (the period), then another double quote.
 
