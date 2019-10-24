@@ -1,12 +1,12 @@
 /* Capturing Groups */
 
-groups();
+// groups();
 
 export function groups() {
   console.log('\nGROUPS\n\n');
 
   // capturing();
-  noncapturing();
+  // noncapturing();
 }
 
 function capturing() {
