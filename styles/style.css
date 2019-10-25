@@ -29,3 +29,9 @@ h2 {
     font-size: 1.4em;
     margin: 0;
 }
+
+#qrcode {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}

@@ -81,11 +81,13 @@ function exercise3() {
 function exercise4() {
   console.log('\nPROMPT 4');
 
+  const topic = "Puppies";
+
   // First, let's create strings for a few different test cases
-  var test1 = "YouTube Beyonce";
-  var test2 = "Search YouTube for Beyonce";
-  var test3 = "Search for Beyonce on YouTube";
-  var test4 = "Find Beyonce on YouTube";
+  var test1 = `YouTube ${topic}`;
+  var test2 = `Search YouTube for ${topic}`;
+  var test3 = `Search for ${topic} on YouTube`;
+  var test4 = `Find ${topic} on YouTube`;
 
   // Next, work on the `Youtube [QUERY]` case
   // First, we know that the word youtube should be the start of the pattern and only occur once, followed by one or more spaces
@@ -95,15 +97,15 @@ function exercise4() {
 
   // Next, work on the `Search YouTube for [QUERY]`
   // First, add a `|` (or) sign in order to start the next pattern
-  regex = /(^(youtube){1} *(.*))|/;
+  regex = /^(youtube){1} *(.*)|/;
   // Next, we know that `search` is the first term we're looking for (though not necessarily a requirement), followed by at least one space
-  regex = /(^(youtube){1} *(.*))|((search)? *)/;
+  regex = /^(youtube){1} *(.*)|(search)? */;
   // Then we need `youtube `
-  regex = /(^(youtube){1} *(.*))|((search)? *youtube *)/;
+  regex = /^(youtube){1} *(.*)|(search)? *youtube */;
   // Next is `for `
-  regex = /(^(youtube){1} *(.*))|((search)? *youtube *for *)/;
+  regex = /^(youtube){1} *(.*)|(search)? *youtube *for */;
   // And lastly, we need the search query itself
-  regex = /(^(youtube){1} *(.*))|((search)? *youtube *for *(.*))/;
+  regex = /^(youtube){1} *(.*)|(search)? *youtube *for *(.*)/;
 
   // The last utterance case is `Search for [QUERY] on YouTube` or `Find [QUERY] on YouTube`
   // Again, add a `|` (or) sign in order to start the next pattern
@@ -118,11 +120,11 @@ function exercise4() {
   regex = /^(youtube){1} *(.*)|(search)? *youtube *for *(.*)|(search|find)? *(for)* *(.*?) *(on)* *youtube/;
 
   // Now, we could go through and clean up our crazy capturing groups
-  // The only infomration we really care about is the search query itself, so let's make everything else noncapturing
+  // The only information we really care about is the search query itself, so let's make everything else noncapturing
   regex = /^(?:youtube){1} *(.*)|(?:search)? *youtube *for *(.*)|(?:search|find)? *(?:for)* *(.*?) *(?:on)* *youtube/;
 
   // Lastly, we should ignore the case altogether, so we can add the `i` flag
-  regex = /^(?:youtube){1} *(.*)|(?:search)? *youtube *for *(.*)|(?:search|find)? *(?:for)* *(.*?) *(?:on)* *youtube/i;
+  regex = /^(?:youtube){1} *(.*)|^(?:search)? *youtube *for *(.*)|^(?:search|find)? *(?:for)* *(.*?) *(?:on)* *youtube/i;
 
   var searchResults1 = regex.exec(test1); // Search Query will be in Group 3
   var searchResults2 = regex.exec(test2); // Search Query will be in Group 6

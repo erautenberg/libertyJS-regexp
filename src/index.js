@@ -187,8 +187,9 @@ function renderExercises() {
 
   document.getElementById('exercises-3').innerHTML = `  var str = "Mr. Harry Potter, Ms. Hermione Granger, Mr. Ronald Weasley, Lord Voldemort, Mrs. Molly Weasley";`;
 
-  document.getElementById('exercises-4').innerHTML = `  var test1 = "YouTube Beyonce";
-  var test2 = "Search YouTube for Beyonce";
-  var test3 = "Search for Beyonce on YouTube";
-  var test4 = "Find Beyonce on YouTube";`;
+  document.getElementById('exercises-4').innerHTML = `  const topic = "Puppies";
+  var test1 = \`YouTube \${topic}\`;
+  var test2 = \`Search YouTube for \${topic}\`;
+  var test3 = \`Search for \${topic} on YouTube\`;
+  var test4 = \`Find \${topic} on YouTube\`;`;
 }
